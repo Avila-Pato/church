@@ -1,8 +1,11 @@
-
+type Color = "red" | "blue" | "red" | "blue" | "green" 
 type ButtonProps = {
   text: string,
   color?: string,
   edad: number,
+  BackgroundColor: Color,
+  TextColor: Color,
+  size: "small" | "medium" | "large"
 }
 
 function Tittle({text, color, edad}: ButtonProps ) {
@@ -20,7 +23,10 @@ function Tittle({text, color, edad}: ButtonProps ) {
  function Home() {
   return (
     <div>
-        <Tittle text= "Soy un botton" color= "rojo" edad={20} />
+        <Tittle text= "Soy un botton" color= "rojo" edad={20} 
+         BackgroundColor="red" TextColor="blue" size="large"
+        />
+
     </div>
   );
 }
