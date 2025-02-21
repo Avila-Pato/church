@@ -47,7 +47,7 @@ const HomeView = () => {
           <Button className="border-2 text-white bg-transparent">Conocenos</Button>
         </div>
       </article>
-      <figure className="flex w-full md:w-1/2 ml-4 right">
+      <figure className="flex w-full md:w-1/2 ml-4 left">
               <Image src="/svg/CrackCruz.svg"
                alt="church" 
               width={600}

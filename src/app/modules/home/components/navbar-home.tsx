@@ -3,11 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 export const StudioNavbar = () => {
-  const hoverClass = "hover:text-orange-500";
+  const [scrolled, setScrolled] = useState(false);
   const pathName = usePathname();
+  const hoverClass = "hover:text-orange-500";
 
   const links = [
     { name: "Inicio", path: "/" },
@@ -17,9 +19,21 @@ export const StudioNavbar = () => {
     { name: "Calendario", path: "/calendario" },
   ]
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);}
+  }, [])
 
   return (
-    <nav className="fixed top-0 left-0 right-0  text-white flex items-center px-2 pr-5 z-50  ">
+    <nav 
+    className={`fixed top-0 left-0 right-0 text-white flex items-center px-2 pr-5 z-50 transition-colors duration-300 ${
+      scrolled ? "bg-neutral-900" : "bg-transparent"
+    }`}
+    >
       <div className="flex items-center flex-shrink-0 ">
         {/* Puedes colocar aqui el sidebar */}
         <Link href="/">
