@@ -1,10 +1,13 @@
-import { Button } from "@/components/ui/button";
 
 const HomeView = () => {
   return (
-    <div>
-      <h1>Soy el homeView</h1>
-      <Button>Soy un boton</Button>
+    <div className="w-full h-screen bg-hero bg-cover bg-centeer flex  justify-between items-center ">
+      <div className="w-full ">
+        <h1 className="bg-red-700">Hola</h1>
+      </div>
+      <div className="flex w-full w-md-1/2 bg-green-400">
+              <h2>Periso</h2>
+        </div>
     </div>
   );
 };
