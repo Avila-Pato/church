@@ -21,18 +21,20 @@ export const StudioNavbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 50);
     }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);}
-  }, [])
+  }, [scrolled]);
 
   return (
     <nav 
     className={`fixed top-0 left-0 right-0 text-white flex items-center px-2 pr-5 z-50 transition-colors duration-300 ${
-      scrolled ? "bg-neutral-900" : "bg-transparent"
+      scrolled ? "bg-gray-800 " : "bg-transparent"
     }`}
+    
+
     >
       <div className="flex items-center flex-shrink-0 ">
         {/* Puedes colocar aqui el sidebar */}
