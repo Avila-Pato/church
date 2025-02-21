@@ -37,6 +37,9 @@ export default {
         '3xl': '1680px',
         '4xl': '2200px',
       },
+	  fontFamily: {
+        poppins: "var(--font-poppins)", // Usa la variable definida en layout.tsx
+      },
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

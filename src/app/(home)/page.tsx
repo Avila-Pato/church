@@ -3,7 +3,7 @@ import HomeView from '../modules/home/view/home-view'
 
 const MainDashboard = () => {
   return (
-    <div><HomeView /></div>
+    <main><HomeView /></main>
   )
 }
 
