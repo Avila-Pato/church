@@ -10,8 +10,8 @@ const SecondSection = () => {
         <div className="flex flex-col  ">
           <div className="
            flex flex-col items-start py-12  px-4 z-10  relative text-white ">
-            <p className="text-lg">Nuestra Historia</p>
-            <p  className="text-2xl tracking-wider">Bienvenidos a Nuetra Iglesia Imep El Bosque</p>
+            <p className="text-lg">Nuestra Iglesia</p>
+            <p  className="text-2xl tracking-wider">Bienvenidos a Imep El Bosque</p>
             </div>
            
 
@@ -24,7 +24,7 @@ const SecondSection = () => {
             />
             </div>
              <div
-              className="bg-opacity-60 p-4 cursor-pointer z-10 items-center  min-h-min flex justify-center   "
+              className="bg-opacity-60 p-4 cursor-pointer z-10 items-center  min-h-min flex justify-center  left "
               onClick={toggleImage}
             >
               <Image
@@ -32,7 +32,7 @@ const SecondSection = () => {
                 alt="next-image"
                 width={300}
                 height={300}
-                className="object-cover rounded-xl  object-center transform hover:scale-110 transition duration-300 ease-in-out left  "
+                className="object-cover rounded-xl object-center transform hover:scale-110 transition duration-300 ease-in-out "
                 />
                 </div>
        
