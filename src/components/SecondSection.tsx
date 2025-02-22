@@ -9,8 +9,8 @@ const SecondSection = () => {
       <figure className=" w-full md:w-1/2 px-6   ">
         <div className="flex flex-col  ">
           <div className="
-           flex flex-col items-start py-12  px-4 z-10  relative text-white ">
-            <p className="text-lg">Nuestra Iglesia</p>
+           flex flex-col items-start py-12  px-4 z-10  relative text-white left">
+            <p className="text-2xl tracking-wider">Nuestra Iglesia</p>
             <p  className="text-2xl tracking-wider">Bienvenidos a Imep El Bosque</p>
             </div>
            
@@ -40,7 +40,7 @@ const SecondSection = () => {
      
 
        {/* Sección del texto */}
-       <article className="w-full md:w-1/2 flex flex-col justify-center items-center py-6 px-8 md:px-12 z-10">
+       <aside className="w-full md:w-1/2 flex flex-col justify-center items-center py-6 px-8 md:px-12 z-10">
         <div className="max-w-3xl mx-auto  border-2 border-gray-700 border-b-blue-700 border-x-transparent text-white rounded-lg shadow-lg p-8 bottom">
           <p className="font-poppins text-xl font-bold py-4">
             <span className="text-2xl text-yellow-400">Bienvenidos</span> a nuestra comunidad cristiana, un espacio donde nos reunimos para fortalecer nuestra fe y crecer espiritualmente.
@@ -55,7 +55,7 @@ const SecondSection = () => {
             Somos una comunidad de fe comprometida a vivir el amor de Dios en todos los aspectos de nuestra vida. Buscamos transformar corazones y mentes a través del encuentro con Dios, guiados por Su propósito y amor.
           </p>
         </div>
-      </article>
+      </aside>
 
     </section>
   );

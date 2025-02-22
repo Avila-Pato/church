@@ -13,6 +13,7 @@ const HomeView = () => {
     origin: "bottom",
     scale: 0.9,
     reset: false,
+    
   });
 
   useScrollReveal(".left", {
