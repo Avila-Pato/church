@@ -41,7 +41,7 @@ const HomeView = () => {
   return (
     <section className="h-screen bg-hero bg-cover bg-center flex  justify-between items-center  ">
       <article className="w-full md:w-1/2 ml-32  ">
-        <p className=" text-white font-poppins text-6xl font-bold pb-4 bottom">Experimenta el amor de dios a travez de la oracion alabanzas y amistad en nuestra iglesia</p>
+        <p className=" text-white font-poppins text-5xl font-bold pb-4 bottom">Experimenta el amor de dios a travez de la oracion alabanzas y amistad en nuestra iglesia</p>
         <p className="text-white  font-medium text-lg font-poppins left ">Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
         <div className="pt-4 flex gap-4 w-full bottom">
           <Button className="bg-orange-600 px-8 py-3">Ver mas</Button>
