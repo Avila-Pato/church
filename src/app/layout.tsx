@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StudioNavbar } from "./modules/home/components/navbar-home";
-import { Poppins } from "next/font/google";
+import { Poppins, Libre_Baskerville } from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
+})
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-libre-baskerville",
 })
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
      
       <body 
-        className={poppins.variable} 
+        className={`${poppins.variable} ${libreBaskerville.className}`} 
         
         >
       <StudioNavbar />

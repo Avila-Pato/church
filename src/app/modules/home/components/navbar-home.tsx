@@ -30,13 +30,13 @@ export const StudioNavbar = () => {
 
   return (
     <nav 
-    className={`fixed top-0 left-0 right-0 text-white flex items-center px-2 pr-5 z-50 transition-colors duration-300 ${
+    className={`fixed top-0 left-0 right-0 text-white flex items-center px-2 pr-5 z-50  transition-colors duration-300 ${
       scrolled ? "bg-gray-800 " : "bg-transparent"
     }`}
     
 
     >
-      <div className="flex items-center flex-shrink-0 ">
+      <div className="flex items-center flex-shrink-0 -my-4">
         {/* Puedes colocar aqui el sidebar */}
         <Link href="/">
           <div className="p-4 flex items-center gap-1 pt-8 ">
