@@ -40,12 +40,12 @@ export const StudioNavbar = () => {
       {/* Logo */}
       <div className="flex items-center -my-4">
         <Link href="/">
-          <div className="p-4 flex items-center gap-1 pt-8">
+          <div className=" flex items-center gap-1 pt-8">
             <Image
               src="/svg/church.svg"
               alt="Logo-Church"
-              width={90}
-              height={90}
+              width={70}
+              height={70}
               className="fill-current text-blue-900"
             />
           </div>
@@ -57,7 +57,7 @@ export const StudioNavbar = () => {
         className="p-4 text-white lg:hidden md:hidden 2xl:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {isOpen ? <X size={30} /> : <Menu size={30} />}
       </button>
 
       {/* Menú móvil (se abre desde la izquierda en móviles y medianas) */}

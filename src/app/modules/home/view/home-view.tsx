@@ -39,16 +39,39 @@ const HomeView = () => {
   });
 
   return (
-    <section className="h-screen bg-hero bg-cover bg-center flex  justify-between items-center  ">
-      <article className="w-full md:w-1/2 ml-32  ">
-        <p className=" text-white font-poppins text-5xl font-bold pb-4 bottom">Experimenta el amor de dios a travez de la oracion alabanzas y amistad en nuestra iglesia</p>
-        <p className="text-white  font-medium text-lg font-poppins left ">Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
-        <div className="pt-4 flex gap-4 w-full bottom">
+    <section className="
+     h-screen
+     bg-hero bg-cover bg-center 
+     
+     flex justify-between 
+     items-center  ">
+      <article 
+      className="w-full flex flex-col md:w-1/2 lg:ml-32">
+
+        <p className=" text-white font-poppins text-5xl font-bold pb-4 ">
+          Experimenta el {" "}
+            <strong className="text-orange-600">
+              amor
+            </strong>
+            {" "}
+            de
+             Dios a travez de la oracion alabanzas y amistad en nuestra iglesia
+          
+          </p>
+
+        <p className="text-white  font-medium text-xl font-poppins left  ">Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
+        <div className="pt-4
+         place-content-center
+         md:place-content-start
+         lg:place-content-start
+         2xl:place-content-start
+
+        flex gap-4 w-full bottom  ">
           <Button className="bg-orange-600 px-8 py-3">Ver mas</Button>
           <Button className="border-2 text-white bg-transparent">Conocenos</Button>
         </div>
       </article>
-      <figure className="flex w-full md:w-1/2 ml-4 left">
+      <figure className="md:flex lg:flex 2xl:flex w-full hidden md:w-1/2 ml-4 left">
               <Image src="/svg/CrackCruz.svg"
                alt="church" 
               width={600}
