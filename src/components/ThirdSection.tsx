@@ -6,7 +6,7 @@ const ThirdSection = () => {
   useScrollReveal(".default", {
     delay: 300,
     distance: "50px",
-    duration: 2000,
+    duration: 1000,
     easing: "ease-in-out",
     opacity: 0,
     origin: "left",
@@ -42,19 +42,16 @@ const ThirdSection = () => {
             <div className="w-full justify-center items-center flex flex-col left relative">
               {/* Imagen Pastores */}
               <Image
-                src="/img/pastores.png"
+                src="/img/pastores.jpeg"
                 alt="Pastores"
-                width={750}
+                width={450}
                 height={100}
-                className="right"
-
-
-
-/>
+                className="right rounded-3xl  hover:scale-105 hover:shadow-2xl hover:shadow-black  transition-all ease-in-out duration-500"
+       />
               {/* Degradado debajo de la imagen */}
-              <div className="bg-opacity-100 py-5 justify-center items-center flex flex-col left relative">
-                <p className="text-3xl font-bold">Pastores</p>
-                <p className="text-3xl font-bold">Carlos Pozo & Nelly Troncoso</p>
+              <div className="absolute text-center bottom-72 w-full h-20  border bg-slate-400 font-poppins font-bold text-black  left ">
+                <p className="text-3xl   font-bold">Pastores </p>
+                <p className="text-2xl font-bold ">Carlos Pozo & Nelly Troncoso</p>
               </div>
             </div>
           </figure>
