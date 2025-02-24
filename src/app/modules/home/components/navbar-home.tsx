@@ -96,7 +96,7 @@ export const StudioNavbar = () => {
       </div>
 
       {/* Menú de escritorio (visible en pantallas grandes) */}
-      <div className="hidden sm:flex  w-full justify-center items-center">
+      <div className="hidden md:flex  w-full justify-center items-center">
         {links.map((link) => (
           <Link href={link.path} key={link.name}>
             <div

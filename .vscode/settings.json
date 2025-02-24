@@ -10,7 +10,7 @@
     "terminal.integrated.gpuAcceleration": "off",
     "explorer.confirmDragAndDrop": false,
     // desactiva los iconos 
-    "workbench.iconTheme": null,
+    // "workbench.iconTheme": null,
     "telemetry.enableTelemetry": false,
     
   }
