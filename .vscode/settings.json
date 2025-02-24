@@ -3,4 +3,14 @@
     "explorer.compactFolders": false,
     "workbench.tree.indent": 20, // Ajusta el indentado del árbol de archivos
     "explorer.fileNesting.enabled": false, // Desactiva la agrupación de archivos
+    "editor.smoothScrolling": false,
+    "editor.cursorBlinking": "solid",
+    "editor.minimap.enabled": false,
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.gpuAcceleration": "off",
+    "explorer.confirmDragAndDrop": false,
+    // desactiva los iconos 
+    "workbench.iconTheme": null,
+    "telemetry.enableTelemetry": false,
+    
   }
