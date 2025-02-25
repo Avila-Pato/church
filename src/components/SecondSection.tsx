@@ -26,7 +26,7 @@ const SecondSection = () => {
         />
 
         {/* contenedor de la imagen  */}
-        <div className="bg-opacity-60 cursor-pointer z-50 items-center lg:pt-16   lg:w-auto w-[300px] lg:flex md:hidden justify-center left flex-shrink-0 ">
+        <div className="bg-opacity-60 cursor-pointer z-50 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0 ">
           <Image
             src={
               currentImage === "/img/two.jpg"
