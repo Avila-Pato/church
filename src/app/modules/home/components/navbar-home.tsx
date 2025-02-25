@@ -33,20 +33,20 @@ export const StudioNavbar = () => {
 
   return (
     <nav
-      className={`fixed z-50 top-0 left-0 right-0 text-white flex items-center px-2 pr-5 transition-colors duration-300 ${
+      className={`fixed z-50 top-0  left-0 right-0 text-white flex items-center px-2 pr-5 transition-colors duration-300 ${
         scrolled ? "bg-gray-800" : "bg-transparent"
       }`}
     >
       {/* Logo */}
-      <div className="flex items-center -my-4">
+      <div className="flex">
         <Link href="/">
-          <div className=" flex items-center gap-1 pt-8">
+          <div className="pt-3">
             <Image
               src="/svg/church.svg"
               alt="Logo-Church"
-              width={70}
-              height={70}
-              className="fill-current text-blue-900"
+              width={80}
+              height={10}
+              className="fill-current  "
             />
           </div>
         </Link>
@@ -54,7 +54,7 @@ export const StudioNavbar = () => {
 
       {/* Botón de menú para móviles y medianas */}
       <button
-        className="p-4 text-white lg:hidden md:hidden 2xl:hidden"
+        className="p-2  text-white lg:hidden md:hidden 2xl:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <X size={30} /> : <Menu size={30} />}
