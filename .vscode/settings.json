@@ -6,7 +6,7 @@
     "editor.smoothScrolling": false,
     "editor.cursorBlinking": "solid",
     "editor.minimap.enabled": false,
-    "files.autoSave": "afterDelay",
+    // "files.autoSave": "afterDelay",
     "terminal.integrated.gpuAcceleration": "off",
     "explorer.confirmDragAndDrop": false,
     // desactiva los iconos 
