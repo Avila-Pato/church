@@ -89,6 +89,7 @@ const HomeView = () => {
     //       pt-24 
     //       h-full     
     //       sm:relative  
+    // Probando si sirvio 
 
     
     hidden sm:flex

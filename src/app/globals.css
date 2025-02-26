@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 body {
-  font-family: var(--font-poppins); /* Si estás usando una fuente personalizada */
+  font-family: var(--font-alegreya), var(--font-poppins), sans-serif !important;
+  background: #222222;
 }
+
+
 
 
 
@@ -12,7 +15,4 @@ body {
 @tailwind utilities;
 
 
-body{
-  background: #222222;
-}
 

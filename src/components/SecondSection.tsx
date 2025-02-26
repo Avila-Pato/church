@@ -15,14 +15,17 @@ const SecondSection = () => {
            lg:flex flex-col items-start lg:py-12   lg:px-4 z-20  text-white hidden left"
         >
           {/* <p className="text-2xl racking-wider">Nuestra Iglesia</p> */}
-          <p className="text-2xl lg:text-4xl absolute "> Imep El Bosque</p>
+          <p className="text-2xl lg:text-4xl absolute  "> Imep El Bosque</p>
         </div>
+
+
+
         <Image
           src={currentImage}
           alt="church"
           width={800}
           height={100}
-          className="  brightness-75 hover:brightness-100  absolute lg:ml-3 left  hidden md:flex  "
+          className="  brightness-75 hover:brightness-100  absolute lg:ml-3 left md:flex hidden "
         />
 
         {/* contenedor de la imagen  */}
@@ -44,7 +47,7 @@ const SecondSection = () => {
       </figure>
 
       {/* Sección del texto */}
-      <aside className="lg:w-full lg:md:w-1/2 lg:flex lg:flex-col lg:justify-center lg:items-center py-6 lg:px-8 md:px-12 z-10   ">
+      <aside className="lg:w-full pl-4 lg:md:w-1/2 lg:flex lg:flex-col lg:justify-center lg:items-center py-6 lg:px-8 md:px-12 z-10   ">
         <div className=" flex flex-col   ">
           <div
             className="lg:max-w-3xl lg:mx-auto  border-2 border-gray-700 border-b-blue-700 border-x-transparent
@@ -58,6 +61,14 @@ const SecondSection = () => {
               fortalecer nuestra fe y crecer espiritualmente.
               <br />
               <br />
+              <Image
+                src="/img/two.jpg"
+                alt="church"
+                width={200}
+                height={200}
+                className=" flex w-full justify-center  "
+              />
+              <br />
               Nos reunimos con el propósito de experimentar encuentros con Dios
               que transformen nuestras vidas, guiándonos a vivir según Su
               voluntad y reflejar Su amor en todo lo que hacemos.
@@ -65,7 +76,15 @@ const SecondSection = () => {
               Nuestro llamado es claro: amar a Dios sobre todas las cosas,
               poniendo a Dios en el centro de nuestra vida diaria.
               <span>
+              <br />
                 <br />
+                <Image
+                  src="/img/prayer.jpg"
+                  alt="church"
+                  width={200}
+                  height={200}
+                  className=" flex w-full justify-center  "
+                />
                 <br />
                 Somos una comunidad de fe comprometida a vivir el amor de Dios
                 en todos los aspectos de nuestra vida. Buscamos transformar

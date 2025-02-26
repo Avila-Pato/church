@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StudioNavbar } from "./modules/home/components/navbar-home";
-import { Poppins, Libre_Baskerville } from "next/font/google";
+import { Poppins,  Alegreya} from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -9,11 +9,12 @@ const poppins = Poppins({
   variable: "--font-poppins",
 })
 
-const libreBaskerville = Libre_Baskerville({
+const alegreya = Alegreya({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-libre-baskerville",
-})
+  variable: "--font-alegreya",
+});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
      
       <body 
-        className={`${poppins.variable} ${libreBaskerville.className}`} 
+        className={`${poppins.variable} ${alegreya.variable}`} 
         
         >
       <StudioNavbar />
