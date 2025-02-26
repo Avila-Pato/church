@@ -74,12 +74,14 @@ export const StudioNavbar = () => {
           <X size={24} />
         </button>
 
-        <div className="flex flex-col space-y-3 pt-24 pl-6">
+        <div className="flex flex-col  space-y-3 pt-24 pl-6">
           {links.map((link) => (
             <Link key={link.name} href={link.path} onClick={() => setIsOpen(false)}>
               <div
-                className={`font-normal text-xl cursor-pointer ${hoverClass} ${
-                  pathName === link.path ? "text-orange-500 font-extrabold" : ""
+                className={`font-normal text-xl 
+                  
+                  cursor-pointer ${hoverClass} ${
+                  pathName === link.path ? "text-orange-500 font-extrabold " : ""
                 }`}
               >
                 {link.name}
@@ -88,7 +90,7 @@ export const StudioNavbar = () => {
           ))}
           {/* Botón de contacto para móviles y medianas */}
           <Link href="/" onClick={() => setIsOpen(false)}>
-            <Button variant={"default"} className="mt-4 max-w-xs">
+            <Button variant={"default"} className="mt-4 max-w-xs  ">
               Contáctanos
             </Button>
           </Link>
@@ -111,9 +113,9 @@ export const StudioNavbar = () => {
       </div>
 
       {/* Botón de contacto para pantallas grandes */}
-      <div className="hidden sm:flex  items-center px-6">
+      <div className="hidden md:flex  items-center px-6">
         <Link href="/">
-          <Button variant={"default"}>Contáctanos</Button>
+          <Button variant={"default"} >Contáctanos</Button>
         </Link>
       </div>
     </nav>

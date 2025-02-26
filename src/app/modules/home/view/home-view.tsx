@@ -42,42 +42,74 @@ const HomeView = () => {
     <section className="
      h-screen
      bg-hero bg-cover bg-center 
-     
-     flex justify-between 
-     items-center  ">
-      <article 
-      className="w-full flex flex-col md:w-1/2 lg:ml-32">
 
-        <p className=" text-white font-poppins text-5xl font-bold pb-4 ">
-          Experimenta el {" "}
-            <strong className="text-orange-600">
-              amor
-            </strong>
-            {" "}
-            de
-             Dios a travez de la oracion alabanzas y amistad en nuestra iglesia
+     flex
+     justify-between 
+     items-center
+       ">
+      <article 
+      className="w-full flex lg:pt-0 flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-14">
+
+        <p className=" pt-4 text-white text-lg lg:text-2xl font-bold pb-4 left ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis officiis corrupti animi alias, voluptatum error omnis ullam tempore dolorum id minima numquam provident laboriosam minus quis corporis. A, harum beatae.
           
           </p>
 
-        <p className="text-white  font-medium text-xl font-poppins left  ">Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
-        <div className="pt-4
+        <p className="text-white font-medium text-sm  lg:text-lg font-poppins left 
+          border-l-4 border-blue-500 pl-4 lg:pl-6">
+    
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
+
+
+    <p className="text-white  text-lg lg:text-2xl font-bold py-4 left ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, eaque quibusdam consectetur non obcaecati perferendis mollitia maxime dolore quidem expedita?
+          </p>
+
+
+
+        <div className=" 
+         pt-12 
          place-content-center
          md:place-content-start
          lg:place-content-start
+         lg:py-3 lg:pt-4
+        
+         
          2xl:place-content-start
-
-        flex gap-4 w-full bottom  ">
-          <Button className="bg-orange-600 px-8 py-3">Ver mas</Button>
+         flex gap-4 w-full bottom  ">
+          <Button className="bg-orange-600 ">Ver mas</Button>
           <Button className="border-2 text-white bg-transparent">Conocenos</Button>
         </div>
       </article>
-      <figure className="md:flex lg:flex 2xl:flex w-full hidden md:w-1/2 ml-4 left">
-              <Image src="/svg/CrackCruz.svg"
-               alt="church" 
-              width={600}
-              height={600}
-              className="  brightness-75 hover:brightness-100" />
-        </figure>
+      <figure
+  className="
+    //  absolute 
+    //       w-full
+    //       pt-24 
+    //       h-full 
+          
+    //        sm:relative 
+    //        sm:flex
+    hidden sm:flex
+      
+    
+    md:w-[500px]
+    md:w-full
+    md:left-0
+    
+    lg:w-[700px]
+    lg:h-full 
+  "
+>
+  <Image
+    src="/svg/CrackCruz.svg"
+    alt="church"
+    width={100}
+    height={100}
+    className="object-contain w-full h-auto"
+  />
+</figure>
+
     </section>
   );
 };
