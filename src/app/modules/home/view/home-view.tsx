@@ -46,6 +46,7 @@ const HomeView = () => {
      flex
      justify-between 
      items-center
+     
        ">
       <article 
       className="w-full flex lg:pt-0 flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-14">
@@ -86,15 +87,13 @@ const HomeView = () => {
     //  absolute 
     //       w-full
     //       pt-24 
-    //       h-full 
-          
-    //        sm:relative 
-    //        sm:flex
+    //       h-full     
+    //       sm:relative  
+
+    
     hidden sm:flex
       
-    
     md:w-[500px]
-    md:w-full
     md:left-0
     
     lg:w-[700px]
