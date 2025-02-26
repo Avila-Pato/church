@@ -46,6 +46,7 @@ export const StudioNavbar = () => {
               alt="Logo-Church"
               width={80}
               height={10}
+              loading="lazy"
               className="fill-current  "
             />
           </div>

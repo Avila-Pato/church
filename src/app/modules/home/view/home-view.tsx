@@ -13,7 +13,7 @@ const HomeView = () => {
     origin: "bottom",
     scale: 0.9,
     reset: false,
-    
+
   });
 
   useScrollReveal(".left", {
@@ -48,26 +48,23 @@ const HomeView = () => {
      items-center
      
        ">
-      <article 
-      className="w-full flex lg:pt-0 flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-14">
+      <article
+        className="w-full flex lg:pt-0 flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-14">
 
         <p className=" pt-4 text-white text-lg lg:text-2xl font-bold pb-4 left ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis officiis corrupti animi alias, voluptatum error omnis ullam tempore dolorum id minima numquam provident laboriosam minus quis corporis. A, harum beatae.
-          
-          </p>
+
+        </p>
 
         <p className="text-white font-medium text-sm  lg:text-lg font-poppins left 
           border-l-4 border-blue-500 pl-4 lg:pl-6">
-    
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
+
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
 
 
-    <p className="text-white  text-lg lg:text-2xl font-bold py-4 left ">
+        <p className="text-white  text-lg lg:text-2xl font-bold py-4 left ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, eaque quibusdam consectetur non obcaecati perferendis mollitia maxime dolore quidem expedita?
-          </p>
-
-
-
+        </p>
         <div className=" 
          pt-12 
          place-content-center
@@ -83,7 +80,7 @@ const HomeView = () => {
         </div>
       </article>
       <figure
-  className="
+        className="
     //  absolute 
     //       w-full
     //       pt-24 
@@ -100,15 +97,15 @@ const HomeView = () => {
     lg:w-[700px]
     lg:h-full 
   "
->
-  <Image
-    src="/svg/CrackCruz.svg"
-    alt="church"
-    width={100}
-    height={100}
-    className="object-contain w-full h-auto"
-  />
-</figure>
+      >
+        <Image
+          src="/svg/CrackCruz.svg"
+          alt="church"
+          width={100}
+          height={100}
+          className="object-contain w-full h-auto right"
+        />
+      </figure>
 
     </section>
   );

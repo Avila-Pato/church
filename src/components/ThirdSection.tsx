@@ -25,7 +25,7 @@ const ThirdSection = () => {
           src="/img/church.webp"
           alt="Pastores"
           width={900}
-          height={70}
+          height={700}
           className="translate-x-[-100px] z-30"
         />
 

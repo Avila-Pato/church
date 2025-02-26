@@ -12,24 +12,22 @@ const SecondSection = () => {
       <figure className=" flex lg:w-1/2 lg:px-6  ">
         <div
           className="
-           lg:flex flex-col items-start lg:py-12   lg:px-4 z-20  text-white hidden left"
+           lg:flex flex-col items-start lg:py-12   lg:px-4 z-10  text-white hidden left"
         >
           {/* <p className="text-2xl racking-wider">Nuestra Iglesia</p> */}
           <p className="text-2xl lg:text-4xl absolute  "> Imep El Bosque</p>
         </div>
-
-
-
         <Image
           src={currentImage}
           alt="church"
           width={800}
           height={100}
+          loading="lazy"
           className="  brightness-75 hover:brightness-100  absolute lg:ml-3 left  md:hidden hidden lg:flex "
         />
 
         {/* contenedor de la imagen  */}
-        <div className="bg-opacity-60 cursor-pointer z-50 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0  ">
+        <div className="bg-opacity-60 cursor-pointer z-30 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0  ">
           <Image
             src={
               currentImage === "/img/two.jpg"
@@ -39,9 +37,11 @@ const SecondSection = () => {
             alt="next-image"
             width={300}
             height={300}
+            loading="lazy"
             className="object-cover rounded-xl object-center transform hover:scale-110  transition duration-300 ease-in-out hidden md:flex lg:inline-flex 
 "
             onClick={toggleImage}
+            aria-label="Switch image"
           />
         </div>
       </figure>
@@ -53,7 +53,7 @@ const SecondSection = () => {
             className="lg:max-w-3xl lg:mx-auto  border-2 border-gray-700 border-b-blue-700 border-x-transparent
          text-white rounded-lg shadow-lg lg:p-8 bottom"
           >
-            <p className="font-poppins text-md lg:text-xl font-bold  ">
+            <div className="font-poppins text-md lg:text-xl font-bold   ">
               <span className=" text-sm lg:text-2xl text-yellow-400">
                 Bienvenidos
               </span>{" "}
@@ -62,7 +62,7 @@ const SecondSection = () => {
               <br />
               <br />
               {/* Primer catalogo */}
-              <div className="bg-gray-800  lg:bg-transparent 
+              <div className="bg-gray-800    lg:bg-transparent 
                 p-3 lg:p-0 rounded-xl
                 
                  ">
@@ -72,13 +72,14 @@ const SecondSection = () => {
                     alt="church"
                     width={200}
                     height={200}
+                    loading="lazy"
+                    // quality={100}
                     className="  flex  w-full justify-center
                         md:w-[900px]
-                        lg:hidden rounded-3xl  
-                "
+                        lg:hidden rounded-3xl "
                   />
                   <br />
-                  <div className="text-start md:pt-4 md:pl-8 sm:pl-4  lg:pl-0 lg:pt-0">
+                  <div className="text-start  md:pt-4 md:pl-8 sm:pl-4 lg:pl-0 lg:pt-0">
                     Nos reunimos con el propósito de experimentar encuentros con Dios
                     que transformen nuestras vidas, guiándonos a vivir según Su
                     voluntad y reflejar Su amor en todo lo que hacemos.
@@ -86,36 +87,36 @@ const SecondSection = () => {
                     poniendo a Dios en el centro de nuestra vida diaria.
                   </div>
 
-              </div>
                 </div>
-              <span>
-                <br />
-                <br />
-                {/* Segundo catalogo */}
-                <div className=" bg-gray-800  lg:bg-transparent 
+              </div>
+
+              <br />
+
+              {/* Segundo catalogo */}
+              <div className=" bg-gray-800  lg:bg-transparent 
                 p-3 lg:p-0 rounded-xl
                  ">
-                  <div className="md:flex sm:flex  justify-center">
-                    <Image
-                      src="/img/prayer.jpg"
-                      alt="church"
-                      width={200}
-                      height={200}
-                      className=" flex  w-full justify-center
+                <div className="md:flex sm:flex  justify-center">
+                  <Image
+                    src="/img/prayer.jpg"
+                    alt="church"
+                    width={200}
+                    height={200}
+
+                    className=" flex  w-full justify-center
                         md:w-[900px]
                         lg:hidden rounded-3xl  "
-                    />
-                    <br />
-                    <div className="text-start md:pt-8 md:pl-8 sm:pl-4 sm:pt-4  lg:pl-0 lg:pt-0">
-                      Somos una comunidad de fe comprometida a vivir el amor de Dios
-                      en todos los aspectos de nuestra vida. Buscamos transformar
-                      corazones y mentes a través del encuentro con Dios, guiados por
-                      Su propósito y amor.
-                    </div>
+                  />
+                  <br />
+                  <div className="text-start md:pt-8 md:pl-8 sm:pl-4 sm:pt-4  lg:pl-0 lg:pt-0">
+                    Somos una comunidad de fe comprometida a vivir el amor de Dios
+                    en todos los aspectos de nuestra vida. Buscamos transformar
+                    corazones y mentes a través del encuentro con Dios, guiados por
+                    Su propósito y amor.
                   </div>
                 </div>
-              </span>
-            </p>
+              </div>
+            </div>
           </div>
         </div>
       </aside>
