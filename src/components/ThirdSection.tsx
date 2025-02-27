@@ -25,18 +25,30 @@ const ThirdSection = () => {
       width={1920} // Ajusta según el tamaño original de la imagen
       height={1080} // Ajusta según el tamaño original de la imagen
       className="w-full h-full object-cover object-center 
-      translate-x-[-150px] lg:translate-x-[-290px] z-10"
+      translate-x-[-150px] lg:translate-x-[-290px] z-10 hidden sm:flex"
+    />
+  </div>
+
+  <div className="absolute w-full h-full ">
+    <Image
+      src="/img/backgorund.jpg"
+      alt="jesus"
+      width={1920} // Ajusta según el tamaño original de la imagen
+      height={1080} // Ajusta según el tamaño original de la imagen
+      priority
+      className="w-full h-full object-cover object-center lg:hidden
+      z-10 "
     />
   </div>
 
   {/* Sección aside con la imagen de pastores y texto */}
-  <div className="flex justify-end ml-8 lg:ml-32 lg:mr-36 lg:w-full relative z-20">
+  <div className="flex justify-end  lg:ml-32 lg:mr-36 lg:w-full relative z-20">
 
     <aside className="text-white relative rounded-lg lg:mx-1 p-4 lg:py-12 w-full max-w-2xl">
       {/* Galería de imágenes */}
-      <figure className="flex justify-center mt-6  h-[400px]  md:h-[200px] lg:h-[500px] relative">
+      <figure className="flex justify-center mt-6  h-[400px]  md:h-[400px] lg:h-[500px] relative">
         
-  <div className="w-full flex flex-col left-12 md:left-52 lg:left-0 relative max-w-[300px] md:max-w-[600px]  lg:max-w-[400px]">
+  <div className="w-full flex flex-col  lg:left-0 relative max-w-[300px]  md:max-w-[600px]  lg:max-w-[400px]">
     <Image
       src="/img/pastores.jpeg"
       alt="Pastores"
@@ -44,7 +56,7 @@ const ThirdSection = () => {
       height={900}
       className="rounded-full lg:rounded-3xl hover:scale-105 hover:shadow-2xl 
                  hover:shadow-black transition-all ease-in-out duration-500 
-                 w-full h-auto md:max-w-[300px] lg:max-w-[500px]"
+                 w-full h-auto md:max-w-[500px] lg:max-w-[500px]"
     />
     <div className="absolute top-0 w-full h-20 flex flex-col justify-center 
                     items-center text-center text-black">
