@@ -3,8 +3,8 @@ import Image from "next/image";
 const MinisteryPage = () => {
     return ( 
         <main className="min-h-screen flex flex-col justify-start  relative ">
-              <div className="text-center mt-32 bg-[#ffffffb0] mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
-                <div className=" lg:hover:scale-110 ease-in-out transition-all duration-300 cursor-pointer bg-[#222222] relative overflow-hidden rounded-xl p-6">
+              <div className="text-center mt-32  mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
+                <div className=" hover:brightness-110 cursor-pointer bg-[#222222] relative rounded-xl p-6">
                     
                     {/* Imagen de fondo */}
                     <Image
@@ -28,8 +28,8 @@ const MinisteryPage = () => {
                 </div>
 
                 {/* 1 catalogo */}
-                    <div className="grid grid-cols-1 lg:gap-16 gap-1  justify-center p-2 items-center w-full">
-                    <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full  lg:w-[600px] p-4 shadow-lg">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  p-2   max-w-full mx-auto">
+                    <div className="bg-[#e3e3e3f6] rounded-xl w-full  lg:w-[600px] p-4 shadow-lg">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -55,7 +55,7 @@ const MinisteryPage = () => {
                         height={900}
                         loading="lazy"
                         quality={100}
-                        className="w-fullh-[150px] object-cover rounded-xl"
+                        className="w-full h-[150px] object-cover rounded-xl"
                     />
                     <p className="mt-3 font-bold text-black truncate">Iglesia Imep el bosque.</p>
                     <p className="text-md text-black mt-2">
@@ -67,7 +67,8 @@ const MinisteryPage = () => {
                 </div>
 
                     {/* Segunda seccion */}
-                    <div className="text-center lg:mt-32 bg-[#ffffffb0] mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
+                    
+                    <div className=" text-center   mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
                 <div className=" lg:hover:scale-110 ease-in-out transition-all duration-300 cursor-pointer bg-[#222222] relative overflow-hidden rounded-xl p-6">
                     
                     {/* Imagen de fondo */}
@@ -84,7 +85,7 @@ const MinisteryPage = () => {
                        
                             
                     {/* Contenido */}
-                    <div className="relative z-10 ">
+                    <div className="relative z-10  ">
                         <p className="lg:text-8xl text-xl font-bold tracking-wide">Zona Zur</p>
                         <p className="w-full text-start  md:px-44 p-4 lg:text-lg text-base font-medium">
                             Queremos estar cerca de ti y acompañarte en cada momento. Nuestro equipo de pastores e intercesores está disponible para escucharte, orar por ti y brindarte apoyo. No estás solo, estamos aquí para ti.
@@ -97,7 +98,7 @@ const MinisteryPage = () => {
                 
 
                 {/* 2 catalogo */}
-                <div className="grid grid-cols-1 lg:gap-16 gap-1  justify-center p-2 items-center w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  justify-center p-2 items-center max-w-full mx-auto">
                     <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full  lg:w-[600px] p-4 shadow-lg">
                     <Image
                         src="/img/central2.jpg"
@@ -124,7 +125,7 @@ const MinisteryPage = () => {
                         height={900}
                         loading="lazy"
                         quality={100}
-                        className="w-fullh-[150px] object-cover rounded-xl"
+                        className="w-full h-[150px] object-cover rounded-xl"
                     />
                     <p className="mt-3 font-bold text-black truncate">Iglesia Imep el bosque.</p>
                     <p className="text-md text-black mt-2">
