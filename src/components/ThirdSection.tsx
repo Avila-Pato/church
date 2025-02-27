@@ -18,7 +18,7 @@ const ThirdSection = () => {
     <main className="flex min-h-screen items-center justify-center
       relative overflow-hidden">
   {/* Imagen principal de fondo */}
-  <div className="absolute w-full h-full ">
+  <div className="absolute w-full h-full left ">
     <Image
       src="/img/church.webp"
       alt="Iglesia"
@@ -48,7 +48,7 @@ const ThirdSection = () => {
       {/* Galería de imágenes */}
       <figure className="flex justify-center mt-6  h-[400px]  md:h-[400px] lg:h-[500px] relative">
         
-  <div className="w-full flex flex-col  lg:left-0 relative max-w-[300px]  md:max-w-[600px]  lg:max-w-[400px]">
+  <div className="w-full flex flex-col  lg:left-0 relative max-w-[300px]  md:max-w-[350px]  lg:max-w-[400px] right">
     <Image
       src="/img/pastores.jpeg"
       alt="Pastores"
