@@ -49,9 +49,9 @@ const HomeView = () => {
      
        ">
       <article
-        className="w-full flex lg:pt-0 flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-14">
+        className="w-full flex flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-4 lg:pt-14 ">
 
-        <p className=" pt-4 text-white text-lg lg:text-2xl font-bold pb-4 left ">
+        <p className=" pt-4 text-white text-lg lg:text-xl font-bold pb-4 left ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis officiis corrupti animi alias, voluptatum error omnis ullam tempore dolorum id minima numquam provident laboriosam minus quis corporis. A, harum beatae.
 
         </p>
@@ -62,7 +62,7 @@ const HomeView = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati autem ducimus veritatis quasi natus ratione esse at earum culpa.</p>
 
 
-        <p className="text-white  text-lg lg:text-2xl font-bold py-4 left ">
+        <p className="text-white  text-lg lg:text-xl font-bold py-4 left ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, eaque quibusdam consectetur non obcaecati perferendis mollitia maxime dolore quidem expedita?
         </p>
         <div className=" 
@@ -86,15 +86,14 @@ const HomeView = () => {
     //       pt-24 
     //       h-full     
     //       sm:relative  
-    // Probando si sirvio 
 
+    hidden md:flex
     
-    hidden sm:flex
-      
+    md:pb-24
     md:w-[500px]
     md:left-0
     
-    lg:w-[700px]
+    lg:w-[600px]
     lg:h-full 
   "
       >
@@ -103,7 +102,7 @@ const HomeView = () => {
           alt="church"
           width={100}
           height={100}
-          className="object-contain w-full h-auto right"
+          className="object-contain w-full h-auto left"
         />
       </figure>
 

@@ -33,8 +33,8 @@ export default function RootLayout({
         className={`${poppins.variable} ${alegreya.variable}`} 
         
         >
-      <StudioNavbar />
       <main className="min-h-screen">
+      <StudioNavbar />
         {children}
       </main>
       </body>

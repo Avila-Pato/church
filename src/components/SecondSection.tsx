@@ -14,8 +14,7 @@ const SecondSection = () => {
           className="
            lg:flex flex-col items-start lg:py-12   lg:px-4 z-10  text-white hidden left"
         >
-          {/* <p className="text-2xl racking-wider">Nuestra Iglesia</p> */}
-          <p className="text-2xl lg:text-4xl absolute  "> Imep El Bosque</p>
+          
         </div>
         <Image
           src={currentImage}

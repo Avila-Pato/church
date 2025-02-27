@@ -15,49 +15,46 @@ const ThirdSection = () => {
   });
 
   return (
-    <main className="flex min-h-screen  items-center justify-center gap-4">
-      {/* Imagen principal */}
-      <div className="absolute w-full h-full flex default ">
-        {/* <div className="flex w-full mt absolute ">
-         <Image src="/svg/nav.svg" alt="" width={600}  height={150} className="z-20  flex w-full justify-end  "/>
-        </div> */}
-        <Image
-          src="/img/church.webp"
-          alt="Pastores"
-          width={900}
-          height={700}
-          className="translate-x-[-100px] z-30"
-        />
+    <main className="flex min-h-screen items-center justify-center
+      relative overflow-hidden">
+  {/* Imagen principal de fondo */}
+  <div className="absolute w-full h-full">
+    <Image
+      src="/img/church.webp"
+      alt="Iglesia"
+      width={1920} // Ajusta según el tamaño original de la imagen
+      height={1080} // Ajusta según el tamaño original de la imagen
+      className="w-full h-full object-cover object-center 
+      translate-x-[-150px] lg:translate-x-[-290px] z-10"
+    />
+  </div>
 
+  {/* Sección aside con la imagen de pastores y texto */}
+  <div className="flex justify-end ml-8 lg:ml-32 lg:mr-36 lg:w-full relative z-20">
+    <aside className="text-white relative rounded-lg lg:mx-1 p-4 lg:py-12 w-full max-w-2xl">
+      {/* Galería de imágenes */}
+      <figure className="flex justify-center gap-4 mt-6 mx-2 h-[200px] lg:h-[500px] relative">
+  <div className="w-full flex flex-col relative max-w-[600px] lg:max-w-[500px]">
+    <Image
+      src="/img/pastores.jpeg"
+      alt="Pastores"
+      width={900}
+      height={900}
+      className="rounded-full lg:rounded-3xl hover:scale-105 hover:shadow-2xl 
+                 hover:shadow-black transition-all ease-in-out duration-500 
+                 w-full h-auto max-w-[600px] lg:max-w-[500px]"
+    />
+    <div className="absolute top-0 w-full h-20 flex flex-col justify-center 
+                    items-center text-center text-black">
+      <p className="text-xl lg:text-3xl font-bold">Pastores</p>
+      <p className="text-lg lg:text-2xl font-bold">Carlos Pozo & Nelly Troncoso</p>
+    </div>
+  </div>
+</figure>
 
-
-      </div>
-
-      {/* Sección aside ampliada */}
-      <div className="flex justify-end mr-36 w-full">
-
-        <aside className="text-white relative rounded-lg mx-1 py-12 min-w-screen ">
-          {/* Galería de imágenes */}
-          <figure className="flex justify-center gap-4 mt-6 mx-2 h-[400px] relative">
-            <div className="w-full justify-center items-center flex flex-col left relative">
-              {/* Imagen Pastores */}
-              <Image
-                src="/img/pastores.jpeg"
-                alt="Pastores"
-                width={450}
-                height={100}
-                className="right rounded-3xl  hover:scale-105 hover:shadow-2xl hover:shadow-black  transition-all ease-in-out duration-500"
-       />
-              {/* Degradado debajo de la imagen */}
-              <div className="absolute text-center bottom-72 w-full h-20  border bg-slate-400 font-poppins font-bold text-black  left ">
-                <p className="text-3xl   font-bold">Pastores </p>
-                <p className="text-2xl font-bold ">Carlos Pozo & Nelly Troncoso</p>
-              </div>
-            </div>
-          </figure>
-        </aside>
-      </div>
-    </main>
+    </aside>
+  </div>
+</main>
   );
 };
 

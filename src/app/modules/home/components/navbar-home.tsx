@@ -15,8 +15,8 @@ export const StudioNavbar = () => {
 
   const links = [
     { name: "Inicio", path: "/" },
+    { name: "Ministerios", path: "/ministerio" },
     { name: "Nosotros", path: "/about" },
-    { name: "Ministerio", path: "/ministerio" },
     { name: "Ubicación", path: "/ubicacion" },
     { name: "Calendario", path: "/calendario" },
   ];
