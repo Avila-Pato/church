@@ -18,7 +18,7 @@ const ThirdSection = () => {
     <main className="flex min-h-screen items-center justify-center
       relative overflow-hidden">
   {/* Imagen principal de fondo */}
-  <div className="absolute w-full h-full">
+  <div className="absolute w-full h-full ">
     <Image
       src="/img/church.webp"
       alt="Iglesia"
@@ -31,10 +31,12 @@ const ThirdSection = () => {
 
   {/* Sección aside con la imagen de pastores y texto */}
   <div className="flex justify-end ml-8 lg:ml-32 lg:mr-36 lg:w-full relative z-20">
+
     <aside className="text-white relative rounded-lg lg:mx-1 p-4 lg:py-12 w-full max-w-2xl">
       {/* Galería de imágenes */}
-      <figure className="flex justify-center gap-4 mt-6 mx-2 h-[200px] lg:h-[500px] relative">
-  <div className="w-full flex flex-col relative max-w-[600px] lg:max-w-[500px]">
+      <figure className="flex justify-center mt-6  h-[400px]  md:h-[200px] lg:h-[500px] relative">
+        
+  <div className="w-full flex flex-col left-12 md:left-52 lg:left-0 relative max-w-[300px] md:max-w-[600px]  lg:max-w-[400px]">
     <Image
       src="/img/pastores.jpeg"
       alt="Pastores"
@@ -42,7 +44,7 @@ const ThirdSection = () => {
       height={900}
       className="rounded-full lg:rounded-3xl hover:scale-105 hover:shadow-2xl 
                  hover:shadow-black transition-all ease-in-out duration-500 
-                 w-full h-auto max-w-[600px] lg:max-w-[500px]"
+                 w-full h-auto md:max-w-[300px] lg:max-w-[500px]"
     />
     <div className="absolute top-0 w-full h-20 flex flex-col justify-center 
                     items-center text-center text-black">

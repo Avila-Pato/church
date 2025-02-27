@@ -5,7 +5,7 @@ const MinisteryPage = () => {
         <main className="min-h-screen flex flex-col justify-start  relative ">
               
               <div className="text-center mt-32 bg-[#ffffffb0] p-4 mx-24 rounded-xl text-white relative">
-                <div className=" hover:scale-110 ease-out transition-all duration-300 cursor-pointer bg-[#222222] relative overflow-hidden rounded-xl p-6">
+                <div className=" hover:scale-110 ease-in-out transition-all duration-300 cursor-pointer bg-[#222222] relative overflow-hidden rounded-xl p-6">
                     
                     {/* Imagen de fondo */}
                     <Image
