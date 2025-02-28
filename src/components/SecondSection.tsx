@@ -52,8 +52,8 @@ const SecondSection = () => {
             className="lg:max-w-3xl lg:mx-auto  border-2 border-gray-700 border-b-blue-700 border-x-transparent
          text-white rounded-lg shadow-lg lg:p-8 bottom"
           >
-            <div className="font-poppins text-md lg:text-xl font-bold   ">
-              <span className=" text-sm lg:text-2xl text-yellow-400">
+            <div className="font-poppins text-sm lg:text-xl">
+              <span className=" text-md lg:text-2xl font-bold  text-yellow-400">
                 Bienvenidos
               </span>{" "}
               a nuestra comunidad cristiana, un espacio donde nos reunimos para
@@ -108,7 +108,7 @@ const SecondSection = () => {
                   />
                   <br />
                   <div className="text-start md:pt-8 md:pl-8 sm:pl-4 sm:pt-4  lg:pl-0 lg:pt-0">
-                    Somos una comunidad de fe comprometida a vivir el amor de Dios
+                    Como comunidad estamos comprometidos a vivir el amor de Dios
                     en todos los aspectos de nuestra vida. Buscamos transformar
                     corazones y mentes a través del encuentro con Dios, guiados por
                     Su propósito y amor.

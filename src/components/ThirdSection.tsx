@@ -15,41 +15,68 @@ const ThirdSection = () => {
   });
 
   return (
-    <main className="flex min-h-screen items-center justify-center
+    <main className="flex min-h-screen  w-full items-center justify-center
       relative overflow-hidden">
-  {/* Imagen principal de fondo */}
-  <div className="absolute w-full h-full left ">
-    <Image
-      src="/img/church.webp"
-      alt="Iglesia"
-      width={1920} // Ajusta según el tamaño original de la imagen
-      height={1080} // Ajusta según el tamaño original de la imagen
-      className="w-full h-full object-cover object-center 
-      translate-x-[-150px] lg:translate-x-[-290px] z-10 hidden sm:flex"
-    />
-  </div>
+      {/* Imagen principal de fondo */}
+      <div className="absolute w-full h-full left ">
+        <Image
+          src="/img/church.webp"
+          alt="Iglesia"
+          width={1920} // Ajusta según el tamaño original de la imagen
+          height={1080} // Ajusta según el tamaño original de la imagen
+          className="w-full h-full object-cover object-center 
+      translate-x-[-150px] md:translate-x-[-350px] lg:translate-x-[-290px] z-10 hidden sm:flex"
+        />
+      </div>
 
-  <div className="absolute w-full h-full ">
-    <Image
-      src="/img/backgorund.jpg"
-      alt="jesus"
-      width={1920} // Ajusta según el tamaño original de la imagen
-      height={1080} // Ajusta según el tamaño original de la imagen
-      priority
-      className="w-full h-full object-cover object-center lg:hidden
+      <div className="absolute w-full h-full ">
+        <Image
+          src="/img/backgorund.jpg"
+          alt="jesus"
+          width={1920} // Ajusta según el tamaño original de la imagen
+          height={1080} // Ajusta según el tamaño original de la imagen
+          priority
+          className="w-full h-full object-cover object-center md:hidden
       z-10 "
-    />
-  </div>
+        />
+      </div>
 
-  {/* Sección aside con la imagen de pastores y texto */}
-  <div className="flex justify-end  lg:ml-32 lg:mr-36 lg:w-full relative z-20">
+      {/* Sección aside con la imagen de pastores y texto */}
+      <div className="flex  lg:w-full justify-end items-end  md:ml-40 lg:mr-24 relative z-20">
+        <aside className="text-white relative rounded-lg  lg:mx-1 p-4 lg:py-12 w-full max-h-screen 
+         max-w-2xl">
+          <figure className="flex justify-center lg:mt-6 mt-2 md:h-[400px] min-h-fit  lg:h-[600px] relative">
 
-    <aside className="text-white relative rounded-lg lg:mx-1 p-4 lg:py-12 w-full max-w-2xl">
-      {/* Galería de imágenes */}
-      <figure className="flex justify-center mt-6  h-[400px]  md:h-[400px] lg:h-[500px] relative">
-        
-  <div className="w-full flex flex-col  lg:left-0 relative max-w-[300px]  md:max-w-[350px]  lg:max-w-[400px] right">
-    <Image
+            <div className="w-full flex flex-col  relative max-w-[700px]    lg:max-w-[700px]  md:max-w-[600px]  right">
+
+              <div className="lg:text-yellow-200 text-yellow-300 border-b-2 text-center mb-5 md:mb-2 lg:mb-2 lg:text-5xl text-3xl font-bold tracking-widest">
+                <h1>Unete a nuestra comunidad </h1>
+              </div>
+              <div className="bg-[#3b3737] p-8 text-lg rounded-3xl  ">
+                <p>
+                  La iglesia no es solo una multitud reunida alrededor de un escenario, sino una comunidad que comparte la vida alrededor de una mesa, donde se forjan relaciones profundas y significativas. Más allá de la adoración y la enseñanza, el verdadero crecimiento espiritual ocurre en la comunión, en la conversación honesta y en el apoyo mutuo.
+                  <p className="mt-4">
+                    Una de las maneras centrales en las que crecemos como discípulos de Jesús es teniendo una comunicación intencional con personas que comparten el mismo objetivo: seguir a Cristo y vivir conforme a sus enseñanzas. A través de estas relaciones, aprendemos, nos edificamos unos a otros y experimentamos el amor de Dios en acción.
+                  </p>
+                </p>
+
+              </div>
+              <p className="text-gray-300 font-semibold text-center text-lg mt-3">Hechos 2:46-47</p>
+              <p className="text-white font-medium text-sm lg:text-base font-poppins border-l-4 border-blue-500 pt-6 pl-4 lg:pl-6 max-w-3xl mx-auto">
+                Día tras día, continuaban unánimes en el templo y partiendo el pan en los hogares, comían juntos con alegría y sencillez de corazón, alabando a Dios y hallando favor con todo el pueblo. Y el Señor añadía cada día al número de ellos los que iban siendo salvos.
+              </p>
+              {/* Contenedor de imagen  */}
+            </div>
+          </figure>
+        </aside>
+      </div>
+    </main>
+  );
+};
+
+export default ThirdSection;
+
+{/* <Image
       src="/img/pastores.jpeg"
       alt="Pastores"
       width={900}
@@ -62,14 +89,4 @@ const ThirdSection = () => {
                     items-center text-center text-black">
       <p className="text-xl lg:text-3xl font-bold">Pastores</p>
       <p className="text-lg lg:text-2xl font-bold">Carlos Pozo & Nelly Troncoso</p>
-    </div>
-  </div>
-</figure>
-
-    </aside>
-  </div>
-</main>
-  );
-};
-
-export default ThirdSection;
+    </div> */}
