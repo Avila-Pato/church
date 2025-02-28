@@ -42,9 +42,9 @@ const ThirdSection = () => {
       </div>
 
       {/* Sección aside con la imagen de pastores y texto */}
-      <div className="flex  lg:w-full justify-end items-end min-h-screen   sm:min-h-fit lg:min-h-fit    md:ml-40 lg:mr-24 relative z-20">
-        <aside className="text-white relative rounded-lg  lg:mx-1 p-4 lg:py-12 w-full  max-h-screen  min-h-[1100px] 
-         max-w-2xl">
+      <div className="flex  lg:w-full justify-end items-end min-h-screen  sm:min-h-[200px] md:min-h-fit  lg:min-h-fit  md:ml-40 lg:mr-24 relative z-20">
+        <aside className="text-white relative rounded-lg  lg:mx-1 p-4 lg:py-12 w-full  max-w-2xl">
+
           <figure className="flex justify-center lg:mt-6 mt-2 md:h-[400px] min-h-fit   lg:h-[600px] relative">
 
             <div className="w-full flex flex-col  relative max-w-[700px]  lg:max-w-[700px]  md:max-w-[600px]  right">
@@ -52,7 +52,7 @@ const ThirdSection = () => {
               <div className="lg:text-yellow-200 text-yellow-300 border-b-2 text-center mb-5 md:mb-2 lg:mb-2 lg:text-5xl text-3xl font-bold tracking-widest">
                 <h1>Unete a nuestra comunidad </h1>
               </div>
-              <div className="bg-[#3b3737] p-8 text-lg rounded-3xl  ">
+              <div className="bg-[#3b3737]/80 p-8 text-lg rounded-3xl  ">
                 <p>
                   La iglesia no es solo una multitud reunida alrededor de un escenario, sino una comunidad que comparte la vida alrededor de una mesa, donde se forjan relaciones profundas y significativas. Más allá de la adoración y la enseñanza, el verdadero crecimiento espiritual ocurre en la comunión, en la conversación honesta y en el apoyo mutuo.
                    </p>
