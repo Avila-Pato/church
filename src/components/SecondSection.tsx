@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import useImageToggle from "../hooks/changeImage";
+import Link from "next/link";
 
 const SecondSection = () => {
   const [currentImage, toggleImage] = useImageToggle(
@@ -14,7 +15,6 @@ const SecondSection = () => {
           className="
            lg:flex flex-col items-start lg:py-12   lg:px-4 z-10  text-white hidden left"
         >
-          
         </div>
         <Image
           src={currentImage}
@@ -22,27 +22,39 @@ const SecondSection = () => {
           width={800}
           height={100}
           loading="lazy"
-          className="  brightness-75 hover:brightness-100  absolute lg:ml-3 left  md:hidden hidden lg:flex "
+          className="  absolute lg:ml-3 left  md:hidden hidden lg:flex "
         />
 
         {/* contenedor de la imagen  */}
-        <div className="bg-opacity-60 cursor-pointer z-30 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0  ">
+        <div className="bg-opacity-60 cursor-pointer z-30 ml-12 pb-8 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0 group relative">
+          {/* Imagen principal con hover y click */}
           <Image
             src={
               currentImage === "/img/two.jpg"
                 ? "/img/prayer.jpg"
                 : "/img/two.jpg"
-            } // Muestra la siguiente imagen
+            }
             alt="next-image"
             width={300}
             height={300}
             loading="lazy"
-            className="object-cover rounded-xl object-center transform hover:scale-110  transition duration-300 ease-in-out hidden md:flex lg:inline-flex 
-"
+            className="object-cover rounded-xl object-center transform hover:scale-110 transition duration-300 ease-in-out hidden md:flex lg:inline-flex"
             onClick={toggleImage}
             aria-label="Switch image"
           />
+
+          {/* Imagen "click.webp" visible solo cuando el cursor está sobre la imagen */}
+              {/* Pointe event none bloquea la interracion de atras para que funcione el hover */}
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 flex items-center justify-center pointer-events-none">
+            <img
+              src="webp/click.webp"
+              alt="Click aquí"
+              className="w-4 sm:w-8 md:w-16 pointer-events-auto"
+              onClick={toggleImage} 
+            />
+          </div>
         </div>
+
       </figure>
 
       {/* Sección del texto */}
