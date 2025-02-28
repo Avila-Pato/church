@@ -26,7 +26,7 @@ const SecondSection = () => {
         />
 
         {/* contenedor de la imagen  */}
-        <div className="bg-opacity-60 cursor-pointer z-30 ml-12 pb-8 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0 group relative">
+        <div className="bg-opacity-60 cursor-pointer z-30 lg:ml-12 pb-8 items-center lg:pt-16 lg:w-[300px] lg:flex md:hidden justify-center left lg:flex-shrink-0 group relative">
           {/* Imagen principal con hover y click */}
           <Image
             src={
@@ -45,7 +45,8 @@ const SecondSection = () => {
 
           {/* Imagen "click.webp" visible solo cuando el cursor está sobre la imagen */}
               {/* Pointe event none bloquea la interracion de atras para que funcione el hover */}
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 
+          flex items-center justify-center pointer-events-none">
             <img
               src="webp/click.webp"
               alt="Click aquí"
