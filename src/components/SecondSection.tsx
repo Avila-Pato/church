@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import useImageToggle from "../hooks/changeImage";
-import Link from "next/link";
+
 
 const SecondSection = () => {
   const [currentImage, toggleImage] = useImageToggle(
