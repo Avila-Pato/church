@@ -107,7 +107,7 @@ const HomeView = () => {
           alt="church"
           width={100}
           height={100}
-          priority
+          loading="lazy"
           className="object-contain w-full h-auto left"
         />
       </figure>

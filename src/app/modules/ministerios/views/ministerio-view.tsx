@@ -1,6 +1,26 @@
+"use client"
 import Image from "next/image";
+import { useRef } from "react";
+
+
 
 const MinisteryPage = () => {
+
+    const seccionesRef = {
+        central: useRef<HTMLElement | null>(null),
+        sur: useRef<HTMLElement | null>(null),
+        norte: useRef<HTMLElement | null>(null),
+    };
+
+    const scrollToSection = (seccion: keyof typeof seccionesRef) => {
+        if (seccionesRef[seccion].current) {
+            seccionesRef[seccion].current.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        }
+    };
+    
     return (
         <main className="min-h-screen flex flex-col justify-start  relative ">
 
@@ -8,6 +28,7 @@ const MinisteryPage = () => {
 
             <div className="min-h-screen flex flex-col justify-center items-center w-full opacity-90 relative">
                 {/* Imagen de fondo */}
+               
                 <Image
                     src="/img/bible1.jpg"
                     alt="church"
@@ -26,18 +47,18 @@ const MinisteryPage = () => {
 
                         <p className="w-1/2 text-2xl text-white">Queremos caminar contigo en fe. Nuestro equipo de pastores y servidores está aquí para apoyarte. Escríbenos y nos pondremos en contacto contigo</p>
                         <div className="w-1/2 pt-2">
-                            <button className="secondary rounded-xl bg-gray-400/40 p-2 hover:bg-gray-600">
+                            <button  className="secondary rounded-xl bg-gray-400/40 p-2 hover:bg-gray-600">
                                 Leer mas...
                             </button>
                         </div>
                     </div>
 
                     {/* Sección derecha */}
-                    <div className="w-1/2 flex flex-col items-center justify-center text-white  gap-4">
+                    <div   className="w-1/2 flex flex-col items-center justify-center text-white  gap-4">
                         <div className="bg-blue-600/10  backdrop-blur-2xl  w-3/4 text-center p-7   rounded-xl  relative ">
                             <p className="font-semibold text-2xl">Zona Central
                             </p>
-                            <button className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
+                            <button  onClick={() => scrollToSection("central")}  className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
                             <Image
@@ -53,7 +74,7 @@ const MinisteryPage = () => {
                         </div>
                         <div className="bg-pink-600/10  backdrop-blur-md  w-3/4 text-center p-7 rounded-xl  relative   ">
                             <p className="font-semibold text-2xl">Zona sur</p>
-                            <button className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
+                            <button onClick={() => scrollToSection("sur")} className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
                             <Image
@@ -70,7 +91,7 @@ const MinisteryPage = () => {
 
                         <div className="bg-yellow-600/10  backdrop-blur-md  w-3/4 text-center p-7 rounded-xl  relative   ">
                             <p className="font-semibold text-2xl">Zona norte</p>
-                            <button className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
+                            <button onClick={() => scrollToSection("norte")} className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
                             <Image
@@ -89,8 +110,8 @@ const MinisteryPage = () => {
             </div>
 
 
-            <div className="text-center   mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
-                <div className=" hover:brightness-110 cursor-pointer bg-[#222222] relative rounded-xl p-6 ">
+            <div className="text-center   mx-6 lg:p-4 lg:mx-0 rounded-xl text-white relative">
+                <div className=" bg-[#222222] relative rounded-xl p-6  ">
                     <div className="relative z-10">
                         {/* Imagen de */}
                         {/* <Image
@@ -103,10 +124,10 @@ const MinisteryPage = () => {
                         className="absolute inset-0 w-full h-full object-cover opacity-40   rounded-xl"
                     /> */}
 
-                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-start ">Zona <p className="font-Dancing_Script inline-flex">
+                        <section ref={seccionesRef.central} className="lg:text-8xl text-xl font-bold tracking-wide text-start ">Zona <p className="font-Dancing_Script inline-flex">
                             Central
                         </p>
-                        </div>
+                        </section>
                         <p className="md:px-44 lg:px-0 p-4 lg:text-lg text-start text-base font-medium">
                             Queremos estar cerca de ti y acompañarte en cada momento. Nuestro equipo de pastores e intercesores está disponible para escucharte, orar por ti y brindarte apoyo. No estás solo, estamos aquí para ti.
                         </p>
@@ -155,8 +176,8 @@ const MinisteryPage = () => {
 
             {/* Segunda seccion */}
 
-            <div className=" text-center   mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
-                <div className=" lg:hover:scale-110 ease-in-out transition-all duration-300 cursor-pointer bg-[#222222] relative overflow-hidden rounded-xl p-6">
+            <section ref={seccionesRef.sur} className=" mx-6 lg:p-4 lg:mx-0 rounded-xl text-white relative">
+                <div className=" bg-[#222222] relative rounded-xl p-6 ">
                     {/* <Image
                         src="/img/central.jpg"
                         alt="church"
@@ -180,7 +201,7 @@ const MinisteryPage = () => {
 
                     </div>
                 </div>
-            </div>
+            </section>
 
 
 
@@ -226,8 +247,8 @@ const MinisteryPage = () => {
 
             {/* Zona norte */}
 
-            <div className=" text-center   mx-6 lg:p-4 lg:mx-24 rounded-xl text-white relative">
-                <div className=" lg:hover:scale-110 ease-in-out transition-all duration-300 cursor-pointer bg-[#222222] relative overflow-hidden rounded-xl p-6">
+            <section ref={seccionesRef.norte} className=" text-center   mx-6 lg:p-4 lg:mx-0 rounded-xl text-white relative">
+                <div className="bg-[#222222] relative rounded-xl p-6 ">
                     {/* <Image
                         src="/img/central.jpg"
                         alt="church"
@@ -251,7 +272,7 @@ const MinisteryPage = () => {
 
                     </div>
                 </div>
-            </div>
+            </section>
 
 
 

@@ -7,6 +7,10 @@ body {
 }
 /* en el tailwin.config.ts se definen */
 
+/* Desplazamiento suave global para toda la aplicación */
+body, html {
+  scroll-behavior: smooth;
+}
 
 
 
