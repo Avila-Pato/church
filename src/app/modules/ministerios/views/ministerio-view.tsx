@@ -36,7 +36,7 @@ const MinisteryPage = () => {
                     height={1000}
                     loading="lazy"
                     quality={100}
-                    className="h-[600px] w-[1200px] absolute object-cover"
+                    className="h-[500px] w-[1200px] absolute object-cover rounded-xl"
                 />
 
                 {/* Contenedor de los elementos sobre la imagen */}
