@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { StudioNavbar } from "./modules/home/components/navbar-home";
+
 import { Poppins,  Alegreya, Dancing_Script } from "next/font/google";
+import { StudioNavbar } from "@/components/navbar-home";
 
 
 //###### Las fuentes tienen que definirse en el layout, el el css y tailwind.config.ts####### ///
