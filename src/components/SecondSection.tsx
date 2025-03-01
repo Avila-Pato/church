@@ -92,11 +92,7 @@ const SecondSection = () => {
                   />
                   <br />
                   <div className="text-start  md:pt-4 md:pl-8 sm:pl-4 lg:pl-0 lg:pt-0">
-                    Nos reunimos con el propósito de experimentar encuentros con Dios
-                    que transformen nuestras vidas, guiándonos a vivir según Su
-                    voluntad y reflejar Su amor en todo lo que hacemos.
-                    Nuestro llamado es claro: amar a Dios sobre todas las cosas,
-                    poniendo a Dios en el centro de nuestra vida diaria.
+                  Nuestro propósito es más que asistir a reuniones; buscamos una relación auténtica con Dios, permitiendo que Su amor transforme nuestra vida diaria. La fe no es solo creer, sino vivir conforme a Su voluntad en cada acción. Nos esforzamos por reflejar el amor de Cristo con integridad, compasión y servicio
                   </div>
 
                 </div>

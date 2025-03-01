@@ -1,3 +1,4 @@
+import { Alegreya, Dancing_Script } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -43,7 +44,9 @@ export default {
       "4xl": "2200px",
     },
     fontFamily: {
-      poppins: "var(--font-poppins)", // Usa la variable definida en layout.tsx
+      Poppins: "var(--font-poppins)", // Usa la variable definida en layout.tsx
+      Dancing_Script: "var(--font-dancingScript)",
+      Alegreya: "var(--font-alegreya)"
     },
   },
   plugins: [require("tailwindcss-animate")],

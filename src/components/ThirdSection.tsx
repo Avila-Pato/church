@@ -63,7 +63,7 @@ const ThirdSection = () => {
 
               </div>
            
-              <p className="text-gray-300 font-semibold text-center text-lg mt-3">Hechos 2:46-47</p>
+              <p className="text-yellow-300  font-semibold text-center text-lg mt-3">Hechos 2:46-47</p>
               <p className="text-white font-medium text-sm lg:text-base font-poppins border-l-4 border-blue-500 pt-6 pl-4 lg:pl-6 max-w-3xl mx-auto">
                 Día tras día, continuaban unánimes en el templo y partiendo el pan en los hogares, comían juntos con alegría y sencillez de corazón, alabando a Dios y hallando favor con todo el pueblo. Y el Señor añadía cada día al número de ellos los que iban siendo salvos.
               </p>

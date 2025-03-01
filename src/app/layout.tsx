@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StudioNavbar } from "./modules/home/components/navbar-home";
-import { Poppins,  Alegreya} from "next/font/google";
+import { Poppins,  Alegreya, Dancing_Script } from "next/font/google";
 
+
+//###### Las fuentes tienen que definirse en el layout, el el css y tailwind.config.ts####### ///
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
 })
 
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: [ "400", "500", "600", "700"], 
+  variable: "--font-dancingScript",
+});
+
 const alegreya = Alegreya({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: [ "400", "500", "600", "700", "800", "900"],
   variable: "--font-alegreya",
 });
 
@@ -25,12 +33,14 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  
 }>) {
   return (
+    
     <html lang="en">
      
       <body 
-        className={`${poppins.variable} ${alegreya.variable}`} 
+        className={`${poppins.variable} ${alegreya.variable} ${dancingScript.variable}`} 
         
         >
       <main className="min-h-screen">
