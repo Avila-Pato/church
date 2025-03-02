@@ -1,4 +1,5 @@
 "use client"
+import LazyImage from "@/components/LazyImage";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -20,24 +21,23 @@ const MinisteryPage = () => {
             });
         }
     };
-    
+
     return (
         <main className="min-h-screen flex flex-col justify-start  relative ">
 
             {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808022_1px,transparent_1px),linear-gradient(to_bottom,#80808022_1px,transparent_1px)] bg-[size:24px_24px] min-h-screen flex flex-col justify-start  pointer-events-none"></div> */}
 
-            <div className="min-h-screen flex flex-col justify-center items-center w-full opacity-90 relative">
+            <div className="min-h-screen flex flex-col justify-center items-center w-full  opacity-90 relative">
                 {/* Imagen de fondo */}
-               
-                <Image
-                    src="/img/bible1.jpg"
-                    alt="church"
-                    width={1000}
-                    height={1000}
-                    loading="lazy"
-                    quality={100}
-                    className="h-[500px] w-[1200px] absolute object-cover rounded-xl"
+
+                <LazyImage
+                    src="https://res.cloudinary.com/dzpox6gya/image/upload/v1740928097/bible1_ieiw33.jpg"
+                    alt="Descripción de la imagen"
+                    width={1200}
+                    height={500}
+                    className=" absolute object-cover rounded-xl "
                 />
+
 
                 {/* Contenedor de los elementos sobre la imagen */}
                 <div className="flex w-full h-[600px] relative z-10">
@@ -47,18 +47,18 @@ const MinisteryPage = () => {
 
                         <p className="w-1/2 text-2xl text-white">Queremos caminar contigo en fe. Nuestro equipo de pastores y servidores está aquí para apoyarte. Escríbenos y nos pondremos en contacto contigo</p>
                         <div className="w-1/2 pt-2">
-                            <button  className="secondary rounded-xl bg-gray-400/40 p-2 hover:bg-gray-600">
+                            <button className="secondary rounded-xl bg-gray-400/40 p-2 hover:bg-gray-600">
                                 Leer mas...
                             </button>
                         </div>
                     </div>
 
                     {/* Sección derecha */}
-                    <div   className="w-1/2 flex flex-col items-center justify-center text-white  gap-4">
+                    <div className="w-1/2 flex flex-col items-center justify-center text-white  gap-4">
                         <div className="bg-blue-600/10  backdrop-blur-2xl  w-3/4 text-center p-7   rounded-xl  relative ">
                             <p className="font-semibold text-2xl">Zona Central
                             </p>
-                            <button  onClick={() => scrollToSection("central")}  className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
+                            <button onClick={() => scrollToSection("central")} className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
                             <Image

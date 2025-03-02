@@ -31,7 +31,7 @@ export default {
       },
     },
     backgroundImage: {
-      hero: "url('/img/fondo.jpg')",
+      hero: "url('https://res.cloudinary.com/dzpox6gya/image/upload/v1740928722/fondo_vv9zhg.jpg')",
     },
     screens: {
       xs: "400px",
