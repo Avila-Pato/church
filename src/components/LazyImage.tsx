@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import Image from "next/image";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
@@ -12,6 +13,7 @@ interface LazyImageProps {
 
 const LazyImage = ({ src, alt, width, height, className }: LazyImageProps) => {
   const { targetRef, isIntersecting } = useIntersectionObserver();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loaded, setLoaded] = useState(false);
 
   return (

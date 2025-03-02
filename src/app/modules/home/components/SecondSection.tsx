@@ -47,9 +47,11 @@ const SecondSection = () => {
               {/* Pointe event none bloquea la interracion de atras para que funcione el hover */}
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute inset-0 
           flex items-center justify-center pointer-events-none">
-            <img
-              src="webp/click.webp"
+            <Image
+              src="/webp/click.webp"
               alt="Click aquí"
+              width={30}
+              height={30}
               className="w-4 sm:w-8 md:w-16 pointer-events-auto"
               onClick={toggleImage} 
             />

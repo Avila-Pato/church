@@ -1,10 +1,11 @@
+import Image from "next/image";
 import React from "react";
 
 interface ImageGalleryProps {
   categoryId?: string;
 }
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ categoryId }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({ }) => {
   const images = [
     "/iglesia/5.jpg",
     "/iglesia/3.jpg",
@@ -23,9 +24,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ categoryId }) => {
     <div className="image-gallery">
       {images.map((src, index) => (
         <div key={index} className="image-item">
-          <img
+          <Image
+            width={400}
+            height={400}
             src={src}
-            alt={`Imagen ${index + 1}` }
+            loading="lazy"
+            alt={`Imagen ${index + 1}  `  }
           />
         </div>
       ))}
