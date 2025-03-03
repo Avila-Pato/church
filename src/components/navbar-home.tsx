@@ -40,9 +40,9 @@ export const StudioNavbar = () => {
       {/* Logo */}
       <div className="flex">
         <Link href="/">
-          <div className="pt-3">
+          <div className="pt-2">
             <Image
-              src="/svg/church.svg"
+              src="/img/logoIglesia.png"
               alt="Logo-Church"
               width={80}
               height={10}

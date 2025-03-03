@@ -3,6 +3,7 @@ import React from "react";
 
 interface ImageGalleryProps {
   categoryId?: string;
+  images: string[]
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ }) => {
@@ -17,6 +18,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ }) => {
     "/iglesia/9.jpg",
     "/iglesia/10.jpg",
     "/iglesia/2.jpg",
+    
   ];
 
   return (
