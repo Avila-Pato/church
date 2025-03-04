@@ -50,15 +50,13 @@ const HomeView = () => {
        ">
       <article
         className="w-full flex flex-col md:w-1/2 md:pl-4 sm:pl-4 pl-4 lg:ml-4 lg:pt-14 ">
-
-
         <p className=" pt-4 text-white text-lg lg:text-xl font-bold pb-2 left ">
           Somos una familia de fe unida por el amor de Dios, un espacio donde crecemos espiritualmente y nos fortalecemos unos a otros en nuestro caminar con Cristo.
         </p>
             
         <div className="rounded-xl bg-gray-950/5  backdrop-blur-md "> 
 
-        <p className="text-yellow-300 font-semibold text-center text-lg ">Hechos 2:46-47</p>
+        <p className="text-yellow-300 font-semibold text-center text-lg  left">Hechos 2:46-47</p>
         <p className="text-white font-medium text-sm  lg:text-lg font-poppins left  border-l-4
          border-blue-500 pl-4 lg:pl-6"
          >
@@ -84,13 +82,13 @@ const HomeView = () => {
           <Button className="border-2 text-white bg-transparent">Conocenos</Button>
         </div>
       </article>
-      <figure className="hidden lg:fill-none md:block md:w-[400px] lg:w-[600px]">
+      <figure className="hidden lg:fill-none md:block md:w-[400px] lg:w-[600px] right">
     <LazyImage
       src="https://res.cloudinary.com/dzpox6gya/image/upload/v1741046933/CrackCruz_rk9u6i.png"
       alt="church"
       width={600}
       height={400}
-      className="w-full lg:fill-none"
+      className="w-full lg:fill-none "
     />
   </figure>
 

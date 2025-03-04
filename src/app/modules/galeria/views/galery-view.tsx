@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import {  useState } from "react";
 import { CategoriesSection } from "../components/gallery-navbar";
 import ImageGallery from "@/app/modules/galeria/components/GalleryImages";
 import { InfiniteScroll } from "@/components/infinite-scroll";
@@ -13,7 +13,9 @@ const GaleryView = ({categoryId, }: GaleryProps ) => {
     const [hasNextPage, setHasNextPage] = useState(true);
     const [isFetchingNextPage, setIsFetchingNextPage] = useState(false);
     const [images, setImages] = useState<string[]>([]); // Aquí guardas las imágenes cargadas
-  
+
+   
+   
     const fetchNextPage = async () => {
       if (isFetchingNextPage || !hasNextPage) return;
   
