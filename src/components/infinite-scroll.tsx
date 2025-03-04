@@ -35,17 +35,22 @@ export const InfiniteScroll = ({
   return (
     <div className="flex flex-col items-center gap-4 p-4">
       <div ref={targetRef} className="h-1"></div>
-      {hasNextPage ? (
+
+      {/* Mostrar el botón solo si no es manual o si se prefiere el scroll manual */}
+      {!isManual && hasNextPage && (
         <Button
           variant="secondary"
-          disabled={!hasNextPage || isFetchingNextPage}
+          disabled={isFetchingNextPage || !hasNextPage}
           onClick={() => fetchNextPage()}
         >
-          {isFetchingNextPage ? "Cargando..." : "Mostrar mas"}
+          {isFetchingNextPage ? "Cargando..." : "Espere..."}
         </Button>
-      ) : (
+      )}
+
+      {/* Mensaje cuando no hay más contenido */}
+      {!hasNextPage && (
         <p className="text-2xl text-white p-2 bg-slate-400 rounded-xl font-semibold text-muted-foreground">
-          has alcanzado el final de la lista
+          Ha alcanzado el final de la fotos
         </p>
       )}
     </div>
