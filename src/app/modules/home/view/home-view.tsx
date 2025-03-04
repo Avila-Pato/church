@@ -1,7 +1,7 @@
 "use client"
+import LazyImage from "@/components/LazyImage";
 import { Button } from "@/components/ui/button"
 import useScrollReveal from "@/hooks/useScrollReveal"
-import Image from "next/image";
 
 const HomeView = () => {
   useScrollReveal(".bottom", {
@@ -44,7 +44,7 @@ const HomeView = () => {
      bg-hero bg-cover bg-center 
 
      flex
-     justify-between 
+     
      items-center
      
        ">
@@ -84,33 +84,15 @@ const HomeView = () => {
           <Button className="border-2 text-white bg-transparent">Conocenos</Button>
         </div>
       </article>
-      <figure
-        className="
-    //  absolute 
-    //       w-full
-    //       pt-24 
-    //       h-full     
-    //       sm:relative  
-
-    hidden md:flex
-    
-    md:pb-24
-    md:w-[500px]
-    md:left-0
-    
-    lg:w-[600px]
-    lg:h-full 
-  "
-      >
-        <Image
-          src="https://res.cloudinary.com/dzpox6gya/image/upload/v1741046933/CrackCruz_rk9u6i.png"
-          alt="church"
-          width={800}
-          height={800}
-          priority
-          className="object-contain w-full h-auto left"
-        />
-      </figure>
+      <figure className="hidden md:block md:w-[400px] lg:w-[600px]">
+    <LazyImage
+      src="https://res.cloudinary.com/dzpox6gya/image/upload/v1741046933/CrackCruz_rk9u6i.png"
+      alt="church"
+      width={600}
+      height={400}
+      className="w-full"
+    />
+    </figure>
 
     </section>
   );
