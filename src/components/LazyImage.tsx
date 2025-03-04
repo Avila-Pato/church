@@ -27,10 +27,9 @@ const LazyImage = ({ src, alt, width, height, className }: LazyImageProps) => {
         <Image
           src={src}
           alt={alt}
-          layout="fill" // Asegura que la imagen ocupe todo el contenedor
-          objectFit="cover" // Mantiene la propiedad object-cover
+          width={width} // Se define manualmente el ancho
+          height={height} // Se define manualmente la altura
           onLoadingComplete={() => setLoaded(true)}
-          
         />
       )}
     </div>

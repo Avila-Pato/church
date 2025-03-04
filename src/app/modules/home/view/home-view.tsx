@@ -84,15 +84,15 @@ const HomeView = () => {
           <Button className="border-2 text-white bg-transparent">Conocenos</Button>
         </div>
       </article>
-      <figure className="hidden md:block md:w-[400px] lg:w-[600px]">
+      <figure className="hidden lg:fill-none md:block md:w-[400px] lg:w-[600px]">
     <LazyImage
       src="https://res.cloudinary.com/dzpox6gya/image/upload/v1741046933/CrackCruz_rk9u6i.png"
       alt="church"
       width={600}
       height={400}
-      className="w-full"
+      className="w-full lg:fill-none"
     />
-    </figure>
+  </figure>
 
     </section>
   );
