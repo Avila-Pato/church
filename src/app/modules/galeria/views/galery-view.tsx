@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import { CategoriesSection } from "../components/gallery-navbar";
-import ImageGallery from "@/components/GalleryImages";
+import ImageGallery from "@/app/modules/galeria/components/GalleryImages";
 import { InfiniteScroll } from "@/components/infinite-scroll";
 
 interface GaleryProps {
@@ -19,7 +19,7 @@ const GaleryView = ({categoryId, }: GaleryProps ) => {
   
       setIsFetchingNextPage(true);
   
-      // Aquí deberías hacer la llamada a tu API o manejar la lógica para cargar más imágenes
+      // Aquí hace llamada a la  API o manejar la lógica para cargar más imágenes
       // Simulando una carga con un delay de 1 segundo
       setTimeout(() => {
         const newImages = [

@@ -18,6 +18,18 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ }) => {
     "/iglesia/9.jpg",
     "/iglesia/10.jpg",
     "/iglesia/2.jpg",
+    "/iglesia/7.jpg",
+    "/iglesia/1.jpg",
+    "/iglesia/8.jpg",
+    "/iglesia/9.jpg",
+    "/iglesia/10.jpg",
+    "/iglesia/2.jpg",
+    "/iglesia/7.jpg",
+    "/iglesia/1.jpg",
+    "/iglesia/8.jpg",
+    "/iglesia/9.jpg",
+    "/iglesia/10.jpg",
+    "/iglesia/2.jpg",
     
   ];
 

@@ -103,11 +103,11 @@ const HomeView = () => {
   "
       >
         <Image
-          src="/svg/CrackCruz.svg"
+          src="https://res.cloudinary.com/dzpox6gya/image/upload/v1741046933/CrackCruz_rk9u6i.png"
           alt="church"
-          width={100}
-          height={100}
-          loading="lazy"
+          width={800}
+          height={800}
+          priority
           className="object-contain w-full h-auto left"
         />
       </figure>
