@@ -1,35 +1,26 @@
-"use client"
-import { useState } from "react";
 import Image from "next/image";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 interface LazyImageProps {
   src: string;
   alt: string;
-  width: number;
-  height: number;
-  className: string;
+  className?: string;
 }
 
-const LazyImage = ({ src, alt, width, height, className }: LazyImageProps) => {
+const LazyImage = ({ src, alt, className = "", ...props }: LazyImageProps) => {
   const { targetRef, isIntersecting } = useIntersectionObserver();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [loaded, setLoaded] = useState(false);
 
   return (
-    <div
-      ref={targetRef}
-        // imagen o un texto) excede los límites de su contenedor, esa parte sobrante será oculta.
-      className={` ${className} overflow-hidden`} // Clases de Tailwind aplicadas al contenedor
-      style={{ height: `${height}px`, width: `${width}px` }}
-    >
+    <div ref={targetRef} className={`relative overflow-hidden ${className}`}>
       {isIntersecting && (
         <Image
           src={src}
           alt={alt}
-          width={width} // Se define manualmente el ancho
-          height={height} // Se define manualmente la altura
-          onLoadingComplete={() => setLoaded(true)}
+          fill // Hace que la imagen llene el contenedor se peude usar esta opcion o
+          // modificarla con with and height en la home sua eso y en ministerios se usa el fill 
+          className="object-cover " // Ajusta la imagen sin deformarla
+          {...props}
+         
         />
       )}
     </div>

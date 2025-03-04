@@ -13,6 +13,7 @@ const MinisteryPage = () => {
         norte: useRef<HTMLElement | null>(null),
     };
 
+    // en css se maneja el scroll
     const scrollToSection = (seccion: keyof typeof seccionesRef) => {
         if (seccionesRef[seccion].current) {
             seccionesRef[seccion].current.scrollIntoView({
@@ -27,40 +28,40 @@ const MinisteryPage = () => {
 
             {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808022_1px,transparent_1px),linear-gradient(to_bottom,#80808022_1px,transparent_1px)] bg-[size:24px_24px] min-h-screen flex flex-col justify-start  pointer-events-none"></div> */}
 
-            <div className="min-h-screen flex flex-col justify-center items-center w-full  opacity-90 relative">
+            <div className="lg:min-h-screen object-cover  flex flex-col lg:justify-center  lg:items-center w-full  opacity-90 relative">
                 {/* Imagen de fondo */}
-
+                    <div className="absolute  inset-0">
                 <LazyImage
                     src="https://res.cloudinary.com/dzpox6gya/image/upload/v1740928097/bible1_ieiw33.jpg"
                     alt="Descripción de la imagen"
-                    width={1200}
-                    height={500}
-                    className=" absolute object-cover rounded-xl "
-                />
-
-
+                    className=" w-full h-[500px] sm:h-[500px] md:h-[600px] rounded-xl"
+                    />
+                    </div>
                 {/* Contenedor de los elementos sobre la imagen */}
-                <div className="flex w-full h-[600px] relative z-10">
+                <div className=" relative z-10  flex w-full h-[500px] ">
                     {/* Sección izquierda */}
-                    <div className="w-1/2 flex flex-col items-center justify-center   p-6">
+                    <div className=" w-full lg:w-1/2 flex  flex-col items-center justify-center   p-6">
                         <p className="font-extrabold text-3xl text-white font font-Dancing_Script">Nuestra comunidad</p>
 
-                        <p className="w-1/2 text-2xl text-white">Queremos caminar contigo en fe. Nuestro equipo de pastores y servidores está aquí para apoyarte. Escríbenos y nos pondremos en contacto contigo</p>
-                        <div className="w-1/2 pt-2">
-                            <button className="secondary rounded-xl bg-gray-400/40 p-2 hover:bg-gray-600">
+                        <p className=" w-full lg:w-1/2 text-2xl text-white">Queremos caminar contigo en fe. Nuestro equipo de pastores y servidores está aquí para apoyarte. Escríbenos y nos pondremos en contacto contigo</p>
+                        <div className="lg:w-1/2 w-full pt-5">
+                            <button className=" secondary rounded-xl bg-gray-400/80 p-2  lg:hover:bg-gray-600">
                                 Leer mas...
                             </button>
                         </div>
                     </div>
 
                     {/* Sección derecha */}
-                    <div className="w-1/2 flex flex-col items-center justify-center text-white  gap-4">
-                        <div className="bg-blue-600/10  backdrop-blur-2xl  w-3/4 text-center p-7   rounded-xl  relative ">
-                            <p className="font-semibold text-2xl">Zona Central
+                    <div className="hidden sm:h w-1/2 lg:flex flex-col items-center justify-center text-white  gap-4">
+                        <div className="bg-blue-600/10  backdrop-blur-2xl  w-3/4 text-center p-7    rounded-xl  relative 
+                         transform hover:scale-110 transition duration-300 ease-in-out cursor-pointer ">
+                            <div className="w-full md:pl-20  ">
+                            <p className="font-semibold text-2xl md:ml-">Iglesia Central
                             </p>
                             <button onClick={() => scrollToSection("central")} className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
+                            </div>
                             <Image
                                 src="/img/bible2.jpg"
                                 alt="church"
@@ -72,11 +73,15 @@ const MinisteryPage = () => {
                                  transform hover:scale-110 transition duration-300 ease-in-out cursor-pointer"
                             />
                         </div>
-                        <div className="bg-pink-600/10  backdrop-blur-md  w-3/4 text-center p-7 rounded-xl  relative   ">
-                            <p className="font-semibold text-2xl">Zona sur</p>
+                        <div className="bg-pink-600/10  backdrop-blur-md  w-3/4 text-center p-7 rounded-xl   relative
+                         transform hover:scale-110 transition duration-300 ease-in-out cursor-pointer   ">
+                             <div className="w-full md:pl-20  "> 
+                            <p className="font-semibold text-2xl
+                             ">Zona sur</p>
                             <button onClick={() => scrollToSection("sur")} className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
+                            </div>
                             <Image
                                 src="/img/bible2.jpg"
                                 alt="church"
@@ -89,11 +94,13 @@ const MinisteryPage = () => {
                             />
                         </div>
 
-                        <div className="bg-yellow-600/10  backdrop-blur-md  w-3/4 text-center p-7 rounded-xl  relative   ">
+                        <div className="bg-yellow-600/10  backdrop-blur-md  w-3/4 text-center p-7 rounded-xl  relative  transform hover:scale-110 transition duration-300 ease-in-out cursor-pointer  ">
+                        <div className="w-full md:pl-20  ">
                             <p className="font-semibold text-2xl">Zona norte</p>
                             <button onClick={() => scrollToSection("norte")} className="secondary rounded-xl bg-gray-400/40 px-2 hover:bg-gray-600">
                                 Conocer..
                             </button>
+                            </div>
                             <Image
                                 src="/img/bible2.jpg"
                                 alt="church"
@@ -110,7 +117,7 @@ const MinisteryPage = () => {
             </div>
 
 
-            <div className="text-center   mx-6 lg:p-4 lg:mx-0 rounded-xl text-white relative">
+            <div className="text-center   lg:p-4 lg:mx-0 rounded-xl text-white relative">
                 <div className=" bg-[#222222] relative rounded-xl p-6  ">
                     <div className="relative z-10">
                         {/* Imagen de */}
@@ -124,11 +131,11 @@ const MinisteryPage = () => {
                         className="absolute inset-0 w-full h-full object-cover opacity-40   rounded-xl"
                     /> */}
 
-                        <section ref={seccionesRef.central} className="lg:text-8xl text-xl font-bold tracking-wide text-start ">Zona <p className="font-Dancing_Script inline-flex">
+                        <section ref={seccionesRef.central} className="lg:text-8xl text-xl font-bold tracking-wide text-center lg:text-start ">Iglesia  <p className="font-Dancing_Script inline-flex">
                             Central
                         </p>
                         </section>
-                        <p className="md:px-44 lg:px-0 p-4 lg:text-lg text-start text-base font-medium">
+                        <p className="md:px-44 lg:px-0 lg:p-4 lg:text-lg text-start text-base font-medium">
                             Queremos estar cerca de ti y acompañarte en cada momento. Nuestro equipo de pastores e intercesores está disponible para escucharte, orar por ti y brindarte apoyo. No estás solo, estamos aquí para ti.
                         </p>
                     </div>
@@ -136,8 +143,8 @@ const MinisteryPage = () => {
             </div>
 
             {/* 1 catalogo */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  p-2   max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] rounded-xl w-full  lg:w-[600px] p-4  right-10 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  p-4   max-w-full mx-auto">
+                <div className="bg-[#e3e3e3f6] rounded-xl w-full  lg:w-[600px] p-2  right-10">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -176,7 +183,8 @@ const MinisteryPage = () => {
 
             {/* Segunda seccion */}
 
-            <section ref={seccionesRef.sur} className=" mx-6 lg:p-4 lg:mx-0 rounded-xl text-white relative">
+            <section ref={seccionesRef.sur} className="
+              lg:p-4 lg:mx-0 rounded-xl text-white relative">
                 <div className=" bg-[#222222] relative rounded-xl p-6 ">
                     {/* <Image
                         src="/img/central.jpg"
@@ -189,8 +197,8 @@ const MinisteryPage = () => {
                     /> */}
                     <div className="relative z-10">
 
-                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-start ">Zona <p className="font-Dancing_Script inline-flex">
-                            Zur
+                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-center lg:text-start">Zona <p className="font-Dancing_Script inline-flex">
+                            Sur
                         </p>
                         </div>
 
@@ -247,7 +255,7 @@ const MinisteryPage = () => {
 
             {/* Zona norte */}
 
-            <section ref={seccionesRef.norte} className=" text-center   mx-6 lg:p-4 lg:mx-0 rounded-xl text-white relative">
+            <section ref={seccionesRef.norte} className=" text-center    lg:p-4 lg:mx-0 rounded-xl text-white relative">
                 <div className="bg-[#222222] relative rounded-xl p-6 ">
                     {/* <Image
                         src="/img/central.jpg"
@@ -260,7 +268,7 @@ const MinisteryPage = () => {
                     /> */}
                     <div className="relative z-10">
 
-                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-start ">Zona <p className="font-Dancing_Script inline-flex">
+                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-center lg:text-center ">Zona <p className="font-Dancing_Script inline-flex">
                             Norte
                         </p>
                         </div>

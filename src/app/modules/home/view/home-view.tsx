@@ -86,9 +86,7 @@ const HomeView = () => {
     <LazyImage
       src="https://res.cloudinary.com/dzpox6gya/image/upload/v1741046933/CrackCruz_rk9u6i.png"
       alt="church"
-      width={600}
-      height={400}
-      className="w-full lg:fill-none "
+      className=" lg:fill-none w-[600px] h-[400px] "
     />
   </figure>
 
