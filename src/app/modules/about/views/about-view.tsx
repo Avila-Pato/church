@@ -5,10 +5,10 @@ import Image from "next/image";
 const AboutView = () => {
     return (
         <section className="h-screen flex overflow-hidden ">
-            <div className="relative w-[1000px] h-screen">
+            <div className="relative lg:w-[1000px]   h-screen">
                 {/* Círculo de fondo */}
 
-                <div className=" md:w-[100px]  ">
+                <div className=" md:w-[100px] ">
                     <div className="absolute
                      
                     lg:-translate-x-16
@@ -25,6 +25,8 @@ const AboutView = () => {
                     sm:-translate-x-0
                     sm:mt-12
                     
+                    hidden sm:block
+                   
 
 
                     bg-gray-300
@@ -55,14 +57,20 @@ const AboutView = () => {
                         className=" 
                         lg:w-[500px] lg:h-[500px] 
                         lg:-translate-x-16
+                        lg:bottom-0 
 
                         md:w-[490px] md:h-[480px]
                         md:-translate-x-36
+                        md:bottom-0 
 
                         sm:w-[390px] sm:h-[380px]
                         sm:-translate-x-36
+                        sm:bottom-0 
+                        hidden sm:block
 
-                        object-cover z-50 absolute bottom-0 "
+                        
+
+                        object-cover z-50 absolute "
                     />
             </div>
 
