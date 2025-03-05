@@ -1,4 +1,3 @@
-import { Alegreya, Dancing_Script } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 export default {
