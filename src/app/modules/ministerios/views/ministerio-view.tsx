@@ -34,7 +34,7 @@ const MinisteryPage = () => {
                 <LazyImage
                     src="https://res.cloudinary.com/dzpox6gya/image/upload/v1740928097/bible1_ieiw33.jpg"
                     alt="Descripción de la imagen"
-                    className=" w-full h-[500px] sm:h-[500px] md:h-[600px] rounded-xl"
+                    className=" w-full h-[500px] sm:h-[500px] md:h-[600px] lg:h-[800px] rounded-xl"
                     />
                     </div>
                 {/* Contenedor de los elementos sobre la imagen */}
