@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useState, useEffect } from "react";
 import React from "react";
+import Image from "next/image";
 
 interface LazyImageProps {
   src: string;
@@ -16,8 +16,8 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (isIntersecting && !loaded) {
-      const timer = setTimeout(() => setLoaded(true), 3000); // Espera 3 segundos antes de cargar la imagen
+    if (isIntersecting && !loaded) {     
+      const timer = setTimeout(() => setLoaded(true), 1000); // Espera 3 segundos antes de cargar la imagen
       return () => clearTimeout(timer);
     }
   }, [isIntersecting]); // Solo dependemos de isIntersecting
@@ -46,4 +46,4 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
   );
 });
 
-export default LazyImage;
+export default LazyImage

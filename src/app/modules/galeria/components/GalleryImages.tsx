@@ -1,22 +1,21 @@
-
-import LazyImage from "@/components/LazyImage";
 import React from "react";
+import LazyImageObserver from "@/components/LazyImageObserver";
 
 interface ImageGalleryProps {
-  images: string[]; // Recibe las imágenes como prop
+  images: string[];
 }
 
-const ImageGallery =  ({ images }: ImageGalleryProps) => {
+const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="image-gallery">
       {images.map((src, index) => (
         <div key={index} className="image-item">
-          
-          <LazyImage
-            width={400}
-            height={400}
+          <LazyImageObserver
             src={src}
             alt={`Imagen ${index + 1}`}
+            width={400}
+            height={400}
+            priority={index === 0} // La primera imagen se carga inmediatamente
           />
         </div>
       ))}

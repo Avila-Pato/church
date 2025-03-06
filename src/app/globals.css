@@ -16,32 +16,27 @@ body, html {
 @tailwind components;
 @tailwind utilities;
 
-
-
-/* Manejando imagenes  que parescan como el pinterest*/
 .image-gallery {
- columns: 5 250px;
- column-gap: 10px ;
-
- margin: 10px;
- padding: 10px;
- box-sizing: border-box;
+  columns: 5 250px;
+  column-gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
+
 .image-item {
   margin-bottom: 10px;
   position: relative;
-  
+  break-inside: avoid; /* Evita que los elementos se dividan entre columnas */
+  display: inline-block; /* Asegura que los elementos se comporten correctamente en columnas */
+  width: 100%; /* Ocupa el 100% del ancho de la columna */
 }
 
 .image-item img {
   width: 100%;
   height: auto;
-  border-radius: 10px; 
-  object-fit: cover; /* Esto asegura que la imagen se ajuste bien */
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
 }
 
-
-
-.test-hidden {
-  
-}

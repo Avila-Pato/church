@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
+// IntersectionObserver detecta si un elemento está visible en la pantalla.
 export const useIntersectionObserver = (options?: IntersectionObserverInit) => {
     const [isIntersecting, setIsIntersecting] = useState(false);
     const targetRef = useRef<HTMLDivElement>(null);
