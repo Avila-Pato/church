@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useState, useEffect } from "react";
+import React from "react";
 
 interface LazyImageProps {
   src: string;
@@ -10,7 +11,7 @@ interface LazyImageProps {
   height?: number | string;
 }
 
-const LazyImage = ({ src, alt, className, width, height = "", ...props }: LazyImageProps) => {
+const LazyImage = React.memo(({ src, alt, className, width, height = "", ...props }: LazyImageProps) => {
   const { targetRef, isIntersecting } = useIntersectionObserver();
   const [loaded, setLoaded] = useState(false);
 
@@ -18,7 +19,7 @@ const LazyImage = ({ src, alt, className, width, height = "", ...props }: LazyIm
     if (isIntersecting && !loaded) {
       setLoaded(true); // Set loaded when the image enters the viewport
     }
-  }, [isIntersecting, loaded]);
+  }, [isIntersecting]); // Solo dependemos de isIntersecting
 
   return (
     <div ref={targetRef} className={`relative overflow-hidden ${className}`}>
@@ -36,13 +37,13 @@ const LazyImage = ({ src, alt, className, width, height = "", ...props }: LazyIm
           height={typeof height === "string" ? parseInt(height, 10) || undefined : height}
           fill={!width && !height} // Si no se especifican dimensiones, usa fill
           className={`transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-          onLoad={() => setLoaded(true)} // Establecer 'loaded' cuando la imagen se haya cargado
+          onLoad={() => setLoaded(true)} // Establece 'loaded' cuando la imagen se haya cargado
           loading="lazy"
           {...props}
         />
       )}
     </div>
   );
-};
+});
 
 export default LazyImage;
