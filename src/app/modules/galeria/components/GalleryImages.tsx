@@ -1,4 +1,5 @@
-import Image from "next/image";
+
+import LazyImage from "@/components/LazyImage";
 import React from "react";
 
 interface ImageGalleryProps {
@@ -10,11 +11,11 @@ const ImageGallery =  ({ images }: ImageGalleryProps) => {
     <div className="image-gallery">
       {images.map((src, index) => (
         <div key={index} className="image-item">
-          <Image
+          
+          <LazyImage
             width={400}
             height={400}
             src={src}
-            loading="lazy"
             alt={`Imagen ${index + 1}`}
           />
         </div>
