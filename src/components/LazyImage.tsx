@@ -20,7 +20,7 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
       const timer = setTimeout(() => setLoaded(true), 1000); // Espera 3 segundos antes de cargar la imagen
       return () => clearTimeout(timer);
     }
-  }, [isIntersecting]); // Solo dependemos de isIntersecting
+  }, [isIntersecting, loaded]); // Solo dependemos de isIntersecting
 
   return (
     <div ref={targetRef} className={`relative overflow-hidden ${className}`}>
@@ -46,4 +46,5 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
   );
 });
 
+LazyImage.displayName = "LazyImage";
 export default LazyImage
