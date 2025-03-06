@@ -17,7 +17,8 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
 
   useEffect(() => {
     if (isIntersecting && !loaded) {
-      setLoaded(true); // Set loaded when the image enters the viewport
+      const timer = setTimeout(() => setLoaded(true), 3000); // Espera 3 segundos antes de cargar la imagen
+      return () => clearTimeout(timer);
     }
   }, [isIntersecting]); // Solo dependemos de isIntersecting
 
@@ -28,7 +29,7 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
         <div className="absolute inset-0 bg-gray-500 animate-pulse rounded-xl"></div>
       )}
 
-      {/* Mostrar la imagen solo cuando esté dentro del viewport y cargada */}
+      {/* Mostrar la imagen solo cuando esté dentro del viewport y después del retraso */}
       {loaded && (
         <Image
           src={src}
@@ -37,7 +38,6 @@ const LazyImage = React.memo(({ src, alt, className, width, height = "", ...prop
           height={typeof height === "string" ? parseInt(height, 10) || undefined : height}
           fill={!width && !height} // Si no se especifican dimensiones, usa fill
           className={`transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-          onLoad={() => setLoaded(true)} // Establece 'loaded' cuando la imagen se haya cargado
           loading="lazy"
           {...props}
         />
