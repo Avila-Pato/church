@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { Poppins,  Alegreya, Dancing_Script } from "next/font/google";
 import { StudioNavbar } from "@/components/navbar-home";
+import { Toaster } from "react-hot-toast";
 
 
 //###### Las fuentes tienen que definirse en el layout, el el css y tailwind.config.ts####### ///
@@ -46,6 +47,7 @@ export default function RootLayout({
         >
       <main className="min-h-screen">
       <StudioNavbar />
+      <Toaster position="top-right" /> 
         {children}
       </main>
       </body>

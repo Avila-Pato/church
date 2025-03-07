@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import LazyImageObserver from "@/components/LazyImageObserver";
 
 interface ImageGalleryProps {
@@ -12,7 +12,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
         <div key={index} className="image-item">
           <LazyImageObserver
             src={src}
-            alt={`Imagen ${index + 1}`}
+            alt={`Imagen ${index}`}
             width={400}
             height={400}
             priority={index === 0} // La primera imagen se carga inmediatamente

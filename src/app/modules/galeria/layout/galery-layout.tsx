@@ -24,6 +24,7 @@ export const GalleryLayout =  ({ children }: LayoutProps) => {
       <main className="flex-1 overflow-y-auto">
         <Suspense fallback={<FallbackLoading />}>
           <ErrorBoundary FallbackComponent={FallbackError}>
+         
             {children}
           </ErrorBoundary>
         </Suspense>
