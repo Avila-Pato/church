@@ -1,7 +1,7 @@
 // src/lib/firebase.ts
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-import serviceAccount from "../../config/firebase-service-account.json"; // Ruta al archivo JSON
+import serviceAccount from "@/config/firebase-service-account.json";
 
 // Configura Firebase con las credenciales
 const firebaseConfig = {
