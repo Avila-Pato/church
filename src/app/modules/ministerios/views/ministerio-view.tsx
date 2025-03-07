@@ -1,8 +1,6 @@
 "use client"
-import LazyImage from "@/components/LazyImage";
 import Image from "next/image";
 import { useRef } from "react";
-
 
 
 const MinisteryPage = () => {
@@ -31,10 +29,13 @@ const MinisteryPage = () => {
             <div className="lg:min-h-screen object-cover  flex flex-col lg:justify-center  lg:items-center w-full  opacity-90 relative">
                 {/* Imagen de fondo */}
                     <div className="absolute  inset-0">
-                <LazyImage
+                <Image
                     src="https://res.cloudinary.com/dzpox6gya/image/upload/v1740928097/bible1_ieiw33.jpg"
                     alt="Descripción de la imagen"
+                    width={1920}
+                    height={1080}
                     className=" w-full h-[500px] sm:h-[500px] md:h-[600px] lg:h-[800px] rounded-xl"
+                    priority
                     />
                     </div>
                 {/* Contenedor de los elementos sobre la imagen */}
@@ -144,7 +145,7 @@ const MinisteryPage = () => {
 
             {/* 1 catalogo */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  p-4   max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] rounded-xl w-full  lg:w-[600px] p-2  right-10">
+                <div className="bg-[#e3e3e3f6] rounded-xl w-full  p-4  right-10">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -162,7 +163,7 @@ const MinisteryPage = () => {
                     </p>
                 </div>
 
-                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full lg:w-[600px] p-4 shadow-lg">
+                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full  p-4 shadow-lg">
                     <Image
                         src="/img/two.jpg"
                         alt="church"
@@ -216,7 +217,7 @@ const MinisteryPage = () => {
 
             {/* 2 catalogo */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  justify-center p-2 items-center max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full  lg:w-[600px] p-4 shadow-lg">
+                <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full  p-4 shadow-lg">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -234,7 +235,7 @@ const MinisteryPage = () => {
                     </p>
                 </div>
 
-                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full lg:w-[600px] p-4 shadow-lg">
+                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full p-4 shadow-lg">
                     <Image
                         src="/img/two.jpg"
                         alt="church"
@@ -268,7 +269,7 @@ const MinisteryPage = () => {
                     /> */}
                     <div className="relative z-10">
 
-                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-center lg:text-center ">Zona <p className="font-Dancing_Script inline-flex">
+                        <div className="lg:text-8xl text-xl font-bold tracking-wide text-center lg:text-start ">Zona <p className="font-Dancing_Script inline-flex">
                             Norte
                         </p>
                         </div>
@@ -287,7 +288,7 @@ const MinisteryPage = () => {
 
             {/* 2 catalogo */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  justify-center p-2 items-center max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full  lg:w-[600px] p-4 shadow-lg">
+                <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full   p-4 shadow-lg">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -305,7 +306,7 @@ const MinisteryPage = () => {
                     </p>
                 </div>
 
-                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full lg:w-[600px] p-4 shadow-lg">
+                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full  p-4 shadow-lg">
                     <Image
                         src="/img/two.jpg"
                         alt="church"
