@@ -5,7 +5,7 @@ import { getFirestore } from "firebase-admin/firestore";
 console.log("FIREBASE_PROJECT_ID", process.env.FIREBASE_PROJECT_ID);
 console.log("FIREBASE_CLIENT_EMAIL", process.env.FIREBASE_CLIENT_EMAIL);
 
-// Configura Firebase con las credenciales desde variables de entorno
+// Configura Firebase con las credenciales desde variables de entorno estas se configuran en elv.olcal
 const firebaseConfig = {
   credential: cert({
     projectId: process.env.FIREBASE_PROJECT_ID,
