@@ -45,4 +45,6 @@ next-env.d.ts
 # .gitignore
 # Ignorar el archivo de credenciales de Firebase
 /src/config/firebase-service-account.json
+# Ignorar el archivo de credenciales de Firebase
+src/lib/firebase-service-account.json
 
