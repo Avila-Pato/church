@@ -6,9 +6,9 @@ import { Timestamp } from "firebase-admin/firestore";
 export const dynamic = "force-dynamic";
 
 cloudinary.config({
-  cloud_name: "dzpox6gya",
-  api_key: "333587889889894",
-  api_secret: "LFxcZWaxXjsiDUJSQ2qpHo_QMLo",
+  cloud_name: "dzpox6gya", // Reemplaza con tus credenciales
+  api_key: "333587889889894", // Reemplaza con tus credenciales
+  api_secret: "LFxcZWaxXjsiDUJSQ2qpHo_QMLo", // Reemplaza con tus credenciales
 });
 
 export async function POST(request: Request): Promise<NextResponse> {
@@ -17,13 +17,15 @@ export async function POST(request: Request): Promise<NextResponse> {
     const file = formData.get("file") as File | null;
     const category = formData.get("category") as string | null;
 
+    // Validar que el archivo y la categoría estén presentes
     if (!file || !category) {
       return NextResponse.json(
-        { message: "Falta la imagen o la categoría" },
+        { message: "Falta el archivo o la categoría" },
         { status: 400 }
       );
     }
 
+    // Validar que el archivo sea una imagen
     if (!file.type.startsWith("image/")) {
       return NextResponse.json(
         { message: "El archivo proporcionado no es una imagen" },
@@ -31,9 +33,11 @@ export async function POST(request: Request): Promise<NextResponse> {
       );
     }
 
+    // Convertir el archivo a un buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
+    // Subir la imagen a Cloudinary
     const response = await new Promise<UploadApiResponse>((resolve, reject) => {
       cloudinary.uploader
         .upload_stream(
@@ -57,7 +61,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     console.log("Upload successful. URL:", response.secure_url);
 
-    // Guardar la imagen en Firestore usando firebase-admin
+    // Guardar la imagen en Firestore
     await db.collection("images").add({
       url: response.secure_url,
       category: category,
