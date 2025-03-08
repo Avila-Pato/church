@@ -133,7 +133,7 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="ml-2 bg-red-500 text-white px-4 py-2 rounded w-full mt-4"
+              className=" bg-red-500 text-white px-4 py-2 rounded w-full mt-4"
             >
               Cancelar
             </button>
