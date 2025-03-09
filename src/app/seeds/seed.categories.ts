@@ -1,4 +1,5 @@
 const categoryNames = [
+  "Iglesia y comunidad",
   "Servicios religiosos",
   "Eventos especiales",
   "Bautizos",
@@ -12,6 +13,5 @@ const categoryNames = [
   "Grupos de oración",
   "Testimonios y bautizos",
   "Comunión y sacramentos",
-  "Iglesia y comunidad"
 ];
 export default categoryNames
