@@ -4,64 +4,81 @@ import toast from "react-hot-toast";
 
 interface UploadFormProps {
   categories: string[];
-  onUploadSuccess: (imageUrl: string, category: string) => void;
+  onUploadSuccess: (imageUrl: string, categoryId: string) => void; 
 }
 
 const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
-  const [category, setCategory] = useState<string>("");
+  const [files, setFiles] = useState<File[]>([]);
+  const [categoryId, setCategoryId] = useState<string>(""); 
   const [isUploading, setIsUploading] = useState(false); // Estado de carga
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-    }
-  };
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (!file || !category) {
-      toast.error("Por favor, selecciona una imagen y una categoría.");
+    const selectedFiles = Array.from(event.target.files || []);
+    const validExtensions = ["image/jpeg", "image/png", "image/gif"];
+  
+    const filteredFiles = selectedFiles.filter((file) =>
+      validExtensions.includes(file.type)
+    );
+  
+    if (filteredFiles.length === 0) {
+      toast.error("Solo se pueden subir archivos de imagen (JPG, PNG, GIF)");
       return;
     }
-
+  
+    setFiles(filteredFiles);
+  };
+  
+  // manejando carga de imagens multiples
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+  
+    if (files.length === 0 || !categoryId) {
+      toast.error("Por favor, selecciona al menos una imagen y una categoría.");
+      return;
+    }
+  
     setIsUploading(true);
-
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("category", category);
-
+  
     try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        toast.error(errorData.message || "Error al subir la imagen");
-        throw new Error(errorData.message || "Error al subir la imagen");
+      const uploadedImages = [];
+  
+      for (const file of files) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("categoryId", categoryId);
+  
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+  
+        if (!response.ok) {
+          const errorData = await response.json();
+          toast.error(errorData.message || "Error al subir la imagen");
+          throw new Error(errorData.message || "Error al subir la imagen");
+        }
+  
+        const result = await response.json();
+        uploadedImages.push(result.url);
       }
-
-      const result = await response.json();
-      toast.success("Imagen subida con éxito");
-
-      // Llama a onUploadSuccess con la URL de la imagen y la categoría seleccionada
-      onUploadSuccess(result.url, category);
-
-      // Cierra el formulario
+  
+      toast.success(`${uploadedImages.length} imágenes subidas con éxito`);
+  
+      // Llama a onUploadSuccess con todas las imágenes subidas
+      uploadedImages.forEach((imageUrl) => onUploadSuccess(imageUrl, categoryId));
+  
+      // Cierra el formulario y limpia los estados
       setIsOpen(false);
+      setFiles([]);
     } catch (error) {
       console.error("Error:", error);
-      toast.error("Error al subir la imagen");
+      toast.error("Error al subir las imágenes");
     } finally {
       setIsUploading(false);
     }
   };
-
+  
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <button
@@ -89,6 +106,7 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
             <input
               id="file"
               type="file"
+              multiple
               accept="image/*"
               onChange={handleFileChange}
               className="mb-4"
@@ -97,21 +115,21 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
 
             {/* Etiqueta y campo de categoría */}
             <label
-              htmlFor="category"
+              htmlFor="categoryId"
               className="block text-sm font-medium text-gray-700 mb-2"
             >
               Selecciona una categoría
             </label>
             <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              id="categoryId"
+              value={categoryId}
+              onChange={(e) => setCategoryId(e.target.value)}
               className="mb-4 p-2 border rounded w-full"
               required
             >
               <option value="">Selecciona una categoría</option>
               {categories.map((cat) => (
-                <option key={cat} value={cat}>
+                <option key={cat} value={cat}> {/* Usar el valor original */}
                   {cat}
                 </option>
               ))}
@@ -133,7 +151,7 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className=" bg-red-500 text-white px-4 py-2 rounded w-full mt-4"
+              className="bg-red-500 text-white px-4 py-2 rounded w-full mt-4"
             >
               Cancelar
             </button>

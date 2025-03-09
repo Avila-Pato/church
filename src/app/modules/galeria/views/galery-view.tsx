@@ -14,67 +14,45 @@ const GaleryView = ({ categoryId }: GaleryProps) => {
   const [isFetchingNextPage, setIsFetchingNextPage] = useState(false);
   const [images, setImages] = useState<string[]>([]);
 
-  // Imágenes de ejemplo (solo se muestran en la vista "all")
-  const exampleImages = [
-    "/iglesia/7.jpg",
-    "/iglesia/2.jpg",
-    "/iglesia/4.jpg",
-    "/iglesia/10.jpg",
-    "/iglesia/3.jpg",
-    "/iglesia/7.jpg",
-    "/iglesia/8.jpg",
-    "/iglesia/9.jpg",
-    "/iglesia/3.jpg",
-    "/iglesia/6.jpg",
-    "/iglesia/8.jpg",
-    "/iglesia/9.jpg",
-    "/iglesia/3.jpg",
-    "/iglesia/6.jpg",
-    "/iglesia/7.jpg",
-    "/iglesia/8.jpg",
-    "/iglesia/5.jpg",
-  ];
-
   // Función para obtener las imágenes desde Firestore
-  const fetchImagesFromFirestore = async (category?: string) => {
-    try {
-      // Transformar el categoryId de la URL al formato original
-      const formattedCategory = category
-        ? categoryNames.find((cat) => cat.toLowerCase().replace(/\s+/g, "-") === category)
-        : undefined;
-
-      const url = formattedCategory
-        ? `/api/images?category=${encodeURIComponent(formattedCategory)}`
-        : "/api/images";
-
-      const response = await fetch(url);
-      const data = await response.json();
-      const firestoreImages = data.map((image: { url: string }) => image.url); // Extrae las URLs
-
-      console.log("Categoría seleccionada:", formattedCategory);
-      console.log("Imágenes de Firestore:", firestoreImages);
-
-      // Si no hay categoría seleccionada, combina las imágenes de ejemplo con las de Firestore
-      if (!formattedCategory) {
-        setImages([...exampleImages, ...firestoreImages]);
-      } else {
-        // Si hay una categoría seleccionada, solo muestra las imágenes de Firestore
-        setImages([...firestoreImages]);
-      }
-    } catch (error) {
-      console.error("Error fetching images from Firestore:", error);
-    }
-  };
-
-  // Obtener las imágenes de Firestore cuando el componente se monta o cambia la categoría
   useEffect(() => {
+    const fetchImagesFromFirestore = async (categoryId?: string) => {
+      try {
+        const formattedCategory = categoryId
+          ? categoryNames.find((cat) => 
+              cat.toLowerCase() === categoryId.toLowerCase() // Comparación directa
+            )
+          : undefined;
+
+        console.log("Categoría transformada antes de hacer la petición:", formattedCategory);
+
+        // 🔴 Limpiar imágenes antes de hacer la nueva petición
+        setImages([]);
+
+        const url = formattedCategory
+          ? `/api/images?categoryId=${encodeURIComponent(formattedCategory)}`
+          : "/api/images"; // Si no hay categoría, trae todas las imágenes
+
+        const response = await fetch(url);
+        const data = await response.json();
+        const firestoreImages = data.map((image: { url: string }) => image.url);
+
+        // ✅ Actualiza el estado con las nuevas imágenes
+        setImages(firestoreImages);
+      } catch (error) {
+        console.error("Error fetching images from Firestore:", error);
+      }
+    };
+
     fetchImagesFromFirestore(categoryId);
-  }, [categoryId]);
+  }, [categoryId]); // 🔥 Se ejecuta cada vez que cambia la categoría
+
+  console.log("Category ID recibido:", categoryId);
 
   // Función que se ejecutará cuando la imagen se suba correctamente
   const handleUploadSuccess = (imageUrl: string, uploadedCategory: string) => {
     // Solo agrega la nueva imagen al estado si no hay una categoría seleccionada o si coincide con la categoría actual
-    if (!categoryId || categoryId === uploadedCategory.toLowerCase().replace(/\s+/g, "-")) {
+    if (!categoryId || categoryId === uploadedCategory.toLowerCase()) {
       setImages((prevImages) => [...prevImages, imageUrl]);
     }
   };

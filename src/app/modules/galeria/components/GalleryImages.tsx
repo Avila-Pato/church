@@ -3,8 +3,8 @@ import LazyImageObserver from "@/components/LazyImageObserver";
 
 interface ImageGalleryProps {
   images: string[];
+  
 }
-
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
     <div className="image-gallery">

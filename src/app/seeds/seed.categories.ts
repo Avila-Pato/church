@@ -14,5 +14,4 @@ const categoryNames = [
   "Comunión y sacramentos",
   "Iglesia y comunidad"
 ];
-
-export default categoryNames;
+export default categoryNames

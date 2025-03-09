@@ -5,12 +5,20 @@ import categoryNames from "@/app/seeds/seed.categories"; // Importa las categor�
 export async function GET(request: Request): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(request.url);
-    const category = searchParams.get("categoryId"); // Obtener la categoría de la URL
+    const categoryId = searchParams.get("categoryId"); // Obtener la categoría de la URL
 
-    // Transformar el categoryId de la URL al formato original
-    const formattedCategory = category
-      ? categoryNames.find((cat) => cat.toLowerCase().replace(/\s+/g, "-") === category)
-      : undefined;
+    // Transformar el categoryId de la URL al formato original para que concida con su url
+    // al usar tiLoweercase asefuta la coincidencia insensible en mayusculas y minusculas 
+    // aqui no es necesario usar replace(/\s+/g, "-"))  
+    const formattedCategory = categoryId
+  ? categoryNames.find((cat) =>
+      cat.toLowerCase() === categoryId.toLowerCase()
+    )
+  : undefined;
+
+    console.log("Categoría transformada:", formattedCategory);
+    console.log("Category ID from URL:", categoryId);
+    console.log("Formatted Category:", formattedCategory);
 
     let query: FirebaseFirestore.Query<FirebaseFirestore.DocumentData> = db.collection("images");
 
@@ -22,8 +30,7 @@ export async function GET(request: Request): Promise<NextResponse> {
     const querySnapshot = await query.get();
     const images = querySnapshot.docs.map((doc) => doc.data());
 
-    console.log("Categoría solicitada:", formattedCategory);
-    console.log("Imágenes recuperadas:", images);
+    console.log("Respuesta de la API:", images);
 
     return NextResponse.json(images);
   } catch (error) {

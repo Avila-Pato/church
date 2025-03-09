@@ -1,5 +1,5 @@
-import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
 import { NextResponse } from "next/server";
+import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
 import { db } from "@/lib/firebase";
 import { Timestamp } from "firebase-admin/firestore";
 
@@ -15,10 +15,10 @@ export async function POST(request: Request): Promise<NextResponse> {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
-    const category = formData.get("category") as string | null;
+    const categoryId = formData.get("categoryId") as string | null;
 
     // Validar que el archivo y la categoría estén presentes
-    if (!file || !category) {
+    if (!file || !categoryId) {
       return NextResponse.json(
         { message: "Falta el archivo o la categoría" },
         { status: 400 }
@@ -42,7 +42,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       cloudinary.uploader
         .upload_stream(
           {
-            folder: category, // Guarda la imagen en una carpeta con el nombre de la categoría
+            folder: categoryId, // Guarda la imagen en una carpeta con el nombre de la categoría
           },
           (error, result) => {
             if (error) {
@@ -64,8 +64,8 @@ export async function POST(request: Request): Promise<NextResponse> {
     // Guardar la imagen en Firestore
     await db.collection("images").add({
       url: response.secure_url,
-      category: category,
-      createdAt: Timestamp.now(), // Usa Timestamp para la fecha
+      category: categoryId, // Usar el valor original
+      createdAt: Timestamp.now(),
     });
 
     return NextResponse.json({
