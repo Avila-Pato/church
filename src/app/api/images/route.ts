@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/firebase";
 import categoryNames from "@/app/seeds/seed.categories"; // Importa las categorías
+import { db } from "@/lib/firebase";
 
 export async function GET(request: Request): Promise<NextResponse> {
   try {

@@ -1,5 +1,7 @@
 "use client";
+import LoginUser from "@/app/modules/galeria/components/Login.galley";
 import { useState } from "react";
+import { useUserAuth } from "@/app/context/AuthContext"; // Importar la autenticación
 import toast from "react-hot-toast";
 
 interface UploadFormProps {
@@ -8,10 +10,11 @@ interface UploadFormProps {
 }
 
 const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
+  const { user } = useUserAuth(); // Obtener el usuario autenticado
   const [isOpen, setIsOpen] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [categoryId, setCategoryId] = useState<string>(""); 
-  const [isUploading, setIsUploading] = useState(false); // Estado de carga
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files || []);
@@ -29,12 +32,16 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
     setFiles(filteredFiles);
   };
   
-  // manejando carga de imagens multiples
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
   
     if (files.length === 0 || !categoryId) {
       toast.error("Por favor, selecciona al menos una imagen y una categoría.");
+      return;
+    }
+
+    if (!user) {
+      toast.error("Debes iniciar sesión como administrador para subir imágenes.");
       return;
     }
   
@@ -65,10 +72,8 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
   
       toast.success(`${uploadedImages.length} imágenes subidas con éxito`);
   
-      // Llama a onUploadSuccess con todas las imágenes subidas
       uploadedImages.forEach((imageUrl) => onUploadSuccess(imageUrl, categoryId));
   
-      // Cierra el formulario y limpia los estados
       setIsOpen(false);
       setFiles([]);
     } catch (error) {
@@ -81,12 +86,18 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
   
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-red-600 text-white px-4 py-2 rounded"
-      >
-        +
-      </button>
+      <div className="flex flex-col">
+        <LoginUser />
+      </div>
+
+      {user && ( // Solo muestra el botón si el usuario está autenticado
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-red-600 text-white px-4 py-2 rounded"
+        >
+          +
+        </button>
+      )}
 
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
@@ -96,11 +107,7 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
           >
             <h2 className="text-xl font-bold mb-4">Subir Imagen</h2>
 
-            {/* Etiqueta y campo de archivo */}
-            <label
-              htmlFor="file"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+            <label htmlFor="file" className="block text-sm font-medium text-gray-700 mb-2">
               Selecciona una imagen
             </label>
             <input
@@ -111,13 +118,10 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
               onChange={handleFileChange}
               className="mb-4"
               required
+              disabled={!user} // Deshabilita si el usuario no está autenticado
             />
 
-            {/* Etiqueta y campo de categoría */}
-            <label
-              htmlFor="categoryId"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+            <label htmlFor="categoryId" className="block text-sm font-medium text-gray-700 mb-2">
               Selecciona una categoría
             </label>
             <select
@@ -126,28 +130,26 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
               onChange={(e) => setCategoryId(e.target.value)}
               className="mb-4 p-2 border rounded w-full"
               required
+              disabled={!user} // Deshabilita si el usuario no está autenticado
             >
               <option value="">Selecciona una categoría</option>
               {categories.map((cat) => (
-                <option key={cat} value={cat}> {/* Usar el valor original */}
-                  {cat}
-                </option>
+                <option key={cat} value={cat}>{cat}</option>
               ))}
             </select>
 
-            {/* Botón de envío */}
             {isUploading ? (
               <div className="text-center text-lg">Subiendo...</div>
             ) : (
               <button
                 type="submit"
                 className="bg-green-500 text-white px-4 py-2 rounded w-full"
+                disabled={!user} // Deshabilita si el usuario no está autenticado
               >
                 Subir
               </button>
             )}
 
-            {/* Botón de cancelación */}
             <button
               type="button"
               onClick={() => setIsOpen(false)}

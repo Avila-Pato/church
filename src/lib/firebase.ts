@@ -1,6 +1,8 @@
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
+
+
 // Verificar que las variables de entorno estén disponibles
 console.log("FIREBASE_PROJECT_ID:", process.env.FIREBASE_PROJECT_ID);
 console.log("FIREBASE_CLIENT_EMAIL:", process.env.FIREBASE_CLIENT_EMAIL);

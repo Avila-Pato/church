@@ -1,3 +1,4 @@
+import { AuthContextProvider } from "@/app/context/AuthContext";
 
 
 interface LayoutProps {
@@ -8,7 +9,11 @@ interface LayoutProps {
     return (
       // <SidebarProvider>
           <div className="flex min-h-screen ">
-            <main className="flex-1 overflow-y-auto ">{children}</main>
+            <main className="flex-1 overflow-y-auto ">
+            <AuthContextProvider>
+              {children}
+            </AuthContextProvider>
+              </main>
           </div>
     );
   };
