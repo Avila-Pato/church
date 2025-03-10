@@ -52,6 +52,5 @@ src/lib/firebase-service-account.json
 /config/
 /secrets/
 # Ignorar la configuración de Firebase
-src/lib/firebase-admin.ts
-# Ignorar variables de entorno
+
 .env.local
