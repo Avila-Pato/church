@@ -35,23 +35,23 @@ const LoginUser = () => {
     console.log(user);
 
     return (
-        <div>
+        <div className=" items-center inline-flex ">
             {loading ? (
                 <p>Cargando...</p>
             ) : !user ? (
-                <button className="bg-fuchsia-300 p-2 rounded-lg" onClick={handleLogin}>
-                    Login
+                <button className="bg-orange-600 p-2 rounded-xl font-semibold" onClick={handleLogin}>
+                    Adm
                 </button>
             ) : (
                 <div>
-                    <p className="text-white font-semibold text-xl">Hola {user.displayName}</p>
+                    {/* <p className="text-white font-semibold text-xl">Hola {user.displayName}</p> */}
                     <img
                         src={user.photoURL || ""}
                         alt="user"
                         className="w-10 h-10 rounded-full inline-flex"
                     />
-                    <button className="bg-fuchsia-300 p-2 rounded-lg" onClick={handleLogout}>
-                        Logout
+                    <button className="bg-orange-600 p-2 rounded-xl font-semibold" onClick={handleLogout}>
+                        Salir
                     </button>
                 </div>
             )}

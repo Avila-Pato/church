@@ -86,18 +86,15 @@ const UploadForm = ({ categories, onUploadSuccess }: UploadFormProps) => {
   
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      <div className="flex flex-col">
-        <LoginUser />
-      </div>
-
       {user && ( // Solo muestra el botón si el usuario está autenticado
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="bg-red-600 text-white px-4 py-2 rounded"
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-red-600 text-white px-4 py-2 rounded"
         >
           +
         </button>
       )}
+      <LoginUser />
 
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
