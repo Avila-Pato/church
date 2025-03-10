@@ -28,7 +28,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
         const user = result.user;
         if (user.email && !ALLOWED_EMAILS.includes(user.email)) {
           signOut(auth); // Cierra la sesión si el correo no está permitido
-          alert("Acceso denegado. Solo usuarios autorizados pueden iniciar sesión.");
+          alert("Acceso denegado. Solo el administrador autorizado puede iniciar sesión.");
         }
       })
       .catch((error) => {
