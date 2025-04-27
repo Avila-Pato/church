@@ -41,6 +41,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
   const { user } = useUserAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const { googleSignIn, logOut } = useUserAuth();
 
   const openWidget = async () => {
     if (!user) {
@@ -101,17 +102,52 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
     );
   };
 
+  const handleLogin = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  }; const handleLogout = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
+    <div className="fixed z-10 bottom-4 right-4 flex flex-col items-end justify-end ">
       {user && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed z-10 bottom-4 right-4 bg-red-600 p-4 rounded-full text-white"
+          className=" bg-red-600 p-4 rounded-full text-white"
         >
           +
         </button>
       )}
 
+      {user && (
+        <button
+          onClick={handleLogout}
+          className=" bg-red-600 p-4 rounded-full text-white"
+        >
+          Salir
+        </button>
+      )}
+ </div>
+
+      {!user && (
+        <button
+          onClick={handleLogin}
+          className="fixed z-10 bottom-4 right-4 bg-red-600 p-4 rounded-full text-white"
+        >
+          Adm
+        </button>
+      )}
+
+     
       {isOpen && (
         <div className="fixed z-10 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-xl space-y-4">
