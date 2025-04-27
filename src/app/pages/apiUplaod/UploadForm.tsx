@@ -106,14 +106,14 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
       {user && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 bg-red-600 p-4 rounded-full text-white"
+          className="fixed z-10 bottom-4 right-4 bg-red-600 p-4 rounded-full text-white"
         >
           +
         </button>
       )}
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed z-10 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-xl space-y-4">
             <h2 className="text-xl font-bold">Subir Imagen</h2>
             <select
