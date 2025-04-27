@@ -4,7 +4,8 @@ import { FilterCarousel } from "@/components/filter-carousel";
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { ErrorBoundary } from "react-error-boundary";
-import UploadForm from "@/app/pages/api/upload";
+import UploadFormCloud from "@/app/pages/apiUplaod/UploadForm";
+
 
 interface CategoriesSectionProps {
   categoryId?: string;
@@ -14,7 +15,7 @@ interface CategoriesSectionProps {
 export const CategoriesSection = ({ categoryId, onUploadSuccess }: CategoriesSectionProps) => {
   return (
     <Suspense fallback={<CategoriesSkeleton />}>
-      <UploadForm categories={categoryNames} onUploadSuccess={onUploadSuccess} />
+      <UploadFormCloud categories={categoryNames} onUploadSuccess={onUploadSuccess} />
       <ErrorBoundary fallback={<div className="text-red-600 p-3">Algo está fallando</div>}>
         <CategoriesSectionSuspense categoryId={categoryId} onUploadSuccess={onUploadSuccess} />
       </ErrorBoundary>
