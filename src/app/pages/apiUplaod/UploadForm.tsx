@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import { useUserAuth } from "@/app/context/AuthContext";
 import toast from "react-hot-toast";
 
+
 declare global {
   interface Window {
     cloudinary?: {
+      createUploadWidget: (options: object, callback: (error: { message: string } | null, result: { event: string; info: { secure_url: string } } | null) => void) => void;
       setCloudinaryConfig(arg0: { secure: boolean; cookiePolicy: string; }): unknown;
       openUploadWidget: (
         options: {
@@ -32,6 +34,9 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
   const { googleSignIn, logOut } = useUserAuth();
   const [isCloudinaryReady, setIsCloudinaryReady] = useState(false);
 
+
+
+  
   // Verificar si Cloudinary está listo
   useEffect(() => {
     if (window.cloudinary?.openUploadWidget) {
