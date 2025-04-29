@@ -1,4 +1,3 @@
-// At the top of the file, ensure you have 'use client'
 'use client';
 
 import { Suspense, useState } from 'react';

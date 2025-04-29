@@ -1,3 +1,5 @@
+"use client";
+// Este hook permite animar elementos al hacer scroll en la página. Utiliza el API de Intersection Observer para detectar cuando los elementos entran en el viewport y aplicarles una animación CSS.
 import { useEffect } from "react";
 
 
