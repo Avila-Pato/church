@@ -15,7 +15,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-
+            
             value: `
             default-src 'self';
             script-src
@@ -25,6 +25,7 @@ const nextConfig = {
               https://upload-widget.cloudinary.com
               https://apis.google.com
               https://accounts.google.com;
+              https://vercel.live;
             style-src 'self' 'unsafe-inline';
             img-src 'self' https://res.cloudinary.com data:;
             connect-src
