@@ -39,12 +39,15 @@ export const GalleryLayout = ({ children }: LayoutProps) => {
         />
 
       <main className="flex-1 overflow-y-auto">
-        
+        {isCloudinaryReady ? (
         <Suspense fallback={<FallbackLoading />}>
           <ErrorBoundary FallbackComponent={FallbackError}>
             {children}
           </ErrorBoundary>
         </Suspense>
+        ) : (
+          <FallbackLoading />
+        ) }
       </main>
     </div>
   );
