@@ -1,7 +1,7 @@
 // At the top of the file, ensure you have 'use client'
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import Script from "next/script";
 
@@ -23,15 +23,22 @@ interface LayoutProps {
 }
 
 export const GalleryLayout = ({ children }: LayoutProps) => {
+  const [isCloudinaryReady, setIsCloudinaryReady] = useState(false);
   return (
     <div className="flex min-h-screen">
       <Script
           src="https://upload-widget.cloudinary.com/global/all.js"
-          strategy="beforeInteractive"
-          onLoad={() => console.log("[Cloudinary] widget cargado")}
+          strategy="lazyOnload"
+          type='text/javascript'
+          onLoad={() => {
+            console.log("[Cloudinary] widget cargado");
+            setIsCloudinaryReady(true);
+          }}
+          onError={(e) => console.error("[Cloudinary] Error al cargar widget", e)}
         />
 
       <main className="flex-1 overflow-y-auto">
+        
         <Suspense fallback={<FallbackLoading />}>
           <ErrorBoundary FallbackComponent={FallbackError}>
             {children}

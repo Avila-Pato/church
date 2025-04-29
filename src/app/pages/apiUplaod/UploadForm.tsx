@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUserAuth } from "@/app/context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -13,23 +13,10 @@ declare global {
           uploadPreset: string;
           sources?: string[];
         },
-        callback: (error: CloudinaryUploadError | null, result: CloudinaryUploadResult) => void
+        callback: (error: { message: string } | null, result: { event: string; info: { secure_url: string } } | null) => void
       ) => void;
     };
   }
-}
-
-interface CloudinaryUploadResult {
-  event: "success" | "close" | string;
-  info: {
-    secure_url: string;
-    [key: string]: unknown;
-  };
-}
-
-interface CloudinaryUploadError {
-  message: string;
-  [key: string]: unknown;
 }
 
 interface Props {
@@ -42,6 +29,24 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const { googleSignIn, logOut } = useUserAuth();
+  const [isCloudinaryReady, setIsCloudinaryReady] = useState(false);
+
+  // Verificar si Cloudinary está listo
+  useEffect(() => {
+    if (window.cloudinary?.openUploadWidget) {
+      setIsCloudinaryReady(true);
+      return;
+    }
+
+    const checkCloudinary = setInterval(() => {
+      if (window.cloudinary?.openUploadWidget) {
+        setIsCloudinaryReady(true);
+        clearInterval(checkCloudinary);
+      }
+    }, 100);
+
+    return () => clearInterval(checkCloudinary);
+  }, []);
 
   const openWidget = async () => {
     if (!user) {
@@ -52,14 +57,12 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
       toast.error("Selecciona categoría.");
       return;
     }
-
-    if (!window.cloudinary?.openUploadWidget) {
-      console.warn("[Cloudinary] widget NO está listo");
-      toast.error("El widget de Cloudinary aún no se ha cargado. Intenta de nuevo en un momento.");
+    if (!isCloudinaryReady) {
+      toast.error("El widget de Cloudinary aún no está listo. Intenta de nuevo en un momento.");
       return;
     }
 
-    window.cloudinary.openUploadWidget(
+    window.cloudinary?.openUploadWidget(
       {
         cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
         uploadPreset: "church_text",
@@ -71,7 +74,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
           toast.error("Error al subir imagen.");
           return;
         }
-        if (result.event === "success") {
+        if (result && result.event === "success") {
           const secureUrl = result.info.secure_url;
           console.log("[Cloudinary] URL:", secureUrl);
 
@@ -108,7 +111,9 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
     } catch (error) {
       console.log(error);
     }
-  }; const handleLogout = async () => {
+  };
+
+  const handleLogout = async () => {
     try {
       await logOut();
     } catch (error) {
@@ -118,25 +123,26 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
 
   return (
     <>
-    <div className="fixed z-10 bottom-4 right-4 flex flex-col items-end justify-end ">
-      {user && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className=" bg-red-600 p-4 rounded-full text-white"
-        >
-          +
-        </button>
-      )}
+      <div className="fixed z-10 bottom-4 right-4 flex flex-col items-end justify-end ">
+        {user && (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="bg-red-600 p-4 rounded-full text-white"
+            disabled={!isCloudinaryReady}
+          >
+            +
+          </button>
+        )}
 
-      {user && (
-        <button
-          onClick={handleLogout}
-          className=" bg-red-600 p-4 rounded-full text-white"
-        >
-          Salir
-        </button>
-      )}
- </div>
+        {user && (
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 p-4 rounded-full text-white"
+          >
+            Salir
+          </button>
+        )}
+      </div>
 
       {!user && (
         <button
@@ -147,7 +153,6 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
         </button>
       )}
 
-     
       {isOpen && (
         <div className="fixed z-10 top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-xl space-y-4">
@@ -166,9 +171,12 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
             </select>
             <button
               onClick={openWidget}
-              className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              className={`w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition ${
+                !isCloudinaryReady ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              disabled={!isCloudinaryReady}
             >
-              Subir con Cloudinary
+              {isCloudinaryReady ? "Subir con Cloudinary" : "Cargando widget..."}
             </button>
             <button
               onClick={() => setIsOpen(false)}
