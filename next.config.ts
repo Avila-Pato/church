@@ -16,29 +16,23 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             
-            value: `
-            default-src 'self';
-            script-src
-              'self'
-              'unsafe-inline'
-              'unsafe-eval'
-              https://upload-widget.cloudinary.com
-              https://apis.google.com
-              https://accounts.google.com;
-              https://vercel.live;
-            style-src 'self' 'unsafe-inline';
-            img-src 'self' https://res.cloudinary.com data:;
-            connect-src
-              'self'
-              https://api.cloudinary.com
-              https://securetoken.googleapis.com
-              https://identitytoolkit.googleapis.com
-              https://www.googleapis.com;
-              frame-src
-                'self'
-                https://upload-widget.cloudinary.com
-                https://church2-40181.firebaseapp.com;
-          `.replace(/\n/g, " ").trim(),
+             value: [
+              "default-src 'self'",
+              // Todo dentro de script-src, sin semicolón antes de vercel.live
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
+                "https://upload-widget.cloudinary.com " +
+                "https://apis.google.com " +
+                "https://accounts.google.com " +
+                "https://vercel.live",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' https://res.cloudinary.com data:",
+              "connect-src 'self' https://api.cloudinary.com " +
+                "https://securetoken.googleapis.com " +
+                "https://identitytoolkit.googleapis.com " +
+                "https://www.googleapis.com",
+              "frame-src 'self' https://upload-widget.cloudinary.com " +
+                "https://church2-40181.firebaseapp.com",
+            ].join("; "),
           },
           {
             key: "Cross-Origin-Opener-Policy",
