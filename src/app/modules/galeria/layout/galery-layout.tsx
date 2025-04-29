@@ -29,7 +29,7 @@ export const GalleryLayout = ({ children }: LayoutProps) => {
     <div className="flex min-h-screen">
       <Script
           src="https://upload-widget.cloudinary.com/global/all.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           type='text/javascript'
           onLoad={() => {
             console.log("[Cloudinary] widget cargado");

@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 declare global {
   interface Window {
     cloudinary?: {
+      setCloudinaryConfig(arg0: { secure: boolean; cookiePolicy: string; }): unknown;
       openUploadWidget: (
         options: {
           cloudName: string;
@@ -35,12 +36,14 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
   useEffect(() => {
     if (window.cloudinary?.openUploadWidget) {
       setIsCloudinaryReady(true);
+      
       return;
     }
 
     const checkCloudinary = setInterval(() => {
       if (window.cloudinary?.openUploadWidget) {
         setIsCloudinaryReady(true);
+        
         clearInterval(checkCloudinary);
       }
     }, 100);
