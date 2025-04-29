@@ -23,6 +23,7 @@ interface LayoutProps {
 }
 
 export const GalleryLayout = ({ children }: LayoutProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isCloudinaryReady, setIsCloudinaryReady] = useState(false);
   return (
     <div className="flex min-h-screen">
