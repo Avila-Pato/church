@@ -32,6 +32,7 @@ const nextConfig = {
                 "https://www.googleapis.com",
               "frame-src 'self' https://upload-widget.cloudinary.com " +
                 "https://church2-40181.firebaseapp.com",
+                "https://vercel.live",
             ].join("; "),
           },
           {
