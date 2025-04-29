@@ -25,14 +25,15 @@ interface LayoutProps {
 export const GalleryLayout = ({ children }: LayoutProps) => {
   return (
     <div className="flex min-h-screen">
-      <main className="flex-1 overflow-y-auto">
-        <Suspense fallback={<FallbackLoading />}>
-          <ErrorBoundary FallbackComponent={FallbackError}>
-          <Script
+      <Script
           src="https://upload-widget.cloudinary.com/global/all.js"
           strategy="beforeInteractive"
           onLoad={() => console.log("[Cloudinary] widget cargado")}
         />
+
+      <main className="flex-1 overflow-y-auto">
+        <Suspense fallback={<FallbackLoading />}>
+          <ErrorBoundary FallbackComponent={FallbackError}>
             {children}
           </ErrorBoundary>
         </Suspense>

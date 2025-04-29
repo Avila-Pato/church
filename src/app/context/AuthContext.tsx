@@ -5,7 +5,7 @@ import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from
 import { auth } from "@/lib/firebase-admin";
 
 // Lista de correos permitidos
-const ALLOWED_EMAILS = ["iglesiaimep6@gmail.com", "p.avilaf1998@gmail.com"];
+const ALLOWED_EMAILS = ["iglesiaimep6@gmail.com", "p.avilaf1998@gmail.com", "francisca1230000@gmail.com"];
 
 const AuthContext = createContext<{
   user: any;
