@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
                 'https://upload-widget.cloudinary.com ' +
+                'https://widget.cloudinary.com ' +
                 'https://apis.google.com ' +
                 'https://accounts.google.com ' +
                 'https://vercel.live',
