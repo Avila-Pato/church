@@ -91,7 +91,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
       toast.error("Widget no listo.");
       return;
     }
-    widgetRef.current.open();
+    widgetRef.current?.open();
   };
 
   const handleLogin = async () => {

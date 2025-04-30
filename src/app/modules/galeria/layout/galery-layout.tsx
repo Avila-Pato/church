@@ -44,7 +44,7 @@ export const GalleryLayout = ({ children }: LayoutProps) => {
   return (
     <div className="flex min-h-screen">
       <Script
-        src="https://upload-widget.cloudinary.com/global/all.js"
+        src="https://widget.cloudinary.com/v2.0/global/all.js"
         strategy="afterInteractive"
         onLoad={() => {
           // Solo configurar si las funciones existen
