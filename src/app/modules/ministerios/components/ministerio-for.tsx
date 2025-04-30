@@ -34,7 +34,7 @@ export const Formulario = () => {
                 rows={10}
                 placeholder='Escribe tu mensaje..'>
                 </textarea>
-                <button type="submit">Enviar</button>
+                <button type="submit" id='button_enviar'>Enviar</button>
             </form>
         </div>
     )
