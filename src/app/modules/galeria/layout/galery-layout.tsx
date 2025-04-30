@@ -47,6 +47,7 @@ export const GalleryLayout = ({ children }: LayoutProps) => {
         src="https://widget.cloudinary.com/v2.0/global/all.js"
         strategy="afterInteractive"
         onLoad={() => {
+          console.log("Cloudinary cargado correctamente.");
           // Solo configurar si las funciones existen
           if (window.cloudinary) {
             // No uses setCloudinaryConfig si no está disponible
