@@ -1,86 +1,79 @@
+// src/app/api/upload/route.ts  (tu POST con Cloudinary SDK)
 import { NextResponse } from "next/server";
 import { v2 as cloudinary, UploadApiResponse } from "cloudinary";
 import { db } from "@/lib/firebase";
 import { Timestamp } from "firebase-admin/firestore";
+import categoryNames from "@/app/seeds/seed.categories";
 
-export const dynamic = "force-dynamic";
+// Convierte un nombre a slug
+// Convierte un nombre al slug correspondiente
+function toSlug(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w ]+/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+// Convierte un slug de vuelta al nombre real usando tu array
+function slugToName(slug: string): string {
+  const match = categoryNames.find(cat => toSlug(cat) === slug.toLowerCase());
+  return match ?? slug;  // si no coincide, devolvemos el propio slug
+}
+
 
 cloudinary.config({
-  cloud_name: "dzpox6gya", // Reemplaza con tus credenciales
-  api_key: "333587889889894", // Reemplaza con tus credenciales
-  api_secret: "LFxcZWaxXjsiDUJSQ2qpHo_QMLo", // Reemplaza con tus credenciales
+  cloud_name: "dzpox6gya",
+  api_key: "333587889889894",
+  api_secret: "LFxcZWaxXjsiDUJSQ2qpHo_QMLo",
 });
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
-    const categoryId = formData.get("categoryId") as string | null;
+    const rawCategoryId = formData.get("categoryId") as string | null; // p.ej. 'paisajes-naturales'
 
-    // Validar que el archivo y la categoría estén presentes
-    if (!file || !categoryId) {
-      return NextResponse.json(
-        { message: "Falta el archivo o la categoría" },
-        { status: 400 }
-      );
+    if (!file || !rawCategoryId) {
+      return NextResponse.json({ message: "Falta el archivo o la categoría" }, { status: 400 });
     }
-
-    // Validar que el archivo sea una imagen
     if (!file.type.startsWith("image/")) {
-      return NextResponse.json(
-        { message: "El archivo proporcionado no es una imagen" },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: "El archivo no es una imagen" }, { status: 400 });
     }
 
-    // Convertir el archivo a un buffer
+    // Traducimos el slug a nombre real
+    const categoryName = slugToName(rawCategoryId);
+
+    // Subimos a Cloudinary en carpeta slug, pero guardamos el name
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Subir la imagen a Cloudinary
     const response = await new Promise<UploadApiResponse>((resolve, reject) => {
       cloudinary.uploader
         .upload_stream(
-          {
-            folder: categoryId, // Guarda la imagen en una carpeta con el nombre de la categoría
-          },
+          { folder: rawCategoryId },
           (error, result) => {
-            if (error) {
-              console.error("Cloudinary upload error:", error);
-              reject(new Error("Error al subir la imagen a Cloudinary"));
-            }
-            if (result) {
-              resolve(result);
-            } else {
-              reject(new Error("No se recibió respuesta de Cloudinary"));
-            }
+            if (error) return reject(error);
+            if (!result) return reject(new Error("No response from Cloudinary"));
+            resolve(result);
           }
         )
         .end(buffer);
     });
 
-    console.log("Upload successful. URL:", response.secure_url);
-
-    // Guardar la imagen en Firestore
+    // Guardamos en Firestore con categoryName (nombre real)
     await db.collection("images").add({
       url: response.secure_url,
-      category: categoryId, // Usar el valor original
+      category: categoryName,
       createdAt: Timestamp.now(),
     });
 
-    return NextResponse.json({
-      message: "Imagen subida con éxito",
-      url: response.secure_url,
-    });
+    return NextResponse.json({ message: "Imagen subida con éxito", url: response.secure_url });
   } catch (error) {
     console.error("Server error:", error);
-
-    const errorMessage =
-      error instanceof Error ? error.message : "Error desconocido";
-
-    return NextResponse.json(
-      { message: "Error al subir la imagen", error: errorMessage },
-      { status: 500 }
-    );
+    const msg = error instanceof Error ? error.message : "Error desconocido";
+    return NextResponse.json({ message: "Error al subir la imagen", error: msg }, { status: 500 });
   }
 }

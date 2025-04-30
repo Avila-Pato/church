@@ -14,6 +14,8 @@ declare global {
           uploadPreset: string;
           sources?: string[];
           multiple?: boolean;
+          showCompletedButton?: boolean;
+          singleUploadAutoClose?: boolean;
         },
         callback: (
           error: { message: string } | null,
@@ -35,8 +37,15 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isWidgetReady, setIsWidgetReady] = useState(false);
   const widgetRef = useRef<ReturnType<NonNullable<Window["cloudinary"]>['createUploadWidget']> | null>(null);
+  const categoryRef = useRef<string>(selectedCategory);
+  const uploadedUrlsRef = useRef<string[]>([]);
 
-  // Initialize Cloudinary widget once
+  // Mantener referencia actualizada de la categoría
+  useEffect(() => {
+    categoryRef.current = selectedCategory;
+  }, [selectedCategory]);
+
+  // Inicializar el widget UNA vez
   useEffect(() => {
     if (!widgetRef.current && window.cloudinary?.createUploadWidget) {
       widgetRef.current = window.cloudinary.createUploadWidget(
@@ -45,6 +54,8 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
           uploadPreset: "church_text",
           sources: ["local", "url", "camera", "google_drive"],
           multiple: false,
+          showCompletedButton: true,
+          singleUploadAutoClose: false,
         },
         (error, result) => {
           if (error) {
@@ -52,46 +63,51 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
             toast.error("Error al subir imagen.");
             return;
           }
+
+          // Acumula cada URL exitosa
           if (result?.event === "success") {
-            const secureUrl = result.info.secure_url;
-            // Send to your API
-            fetch("/api/images", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ url: secureUrl, category: selectedCategory }),
-            })
-              .then(async (resp) => {
-                const body = await resp.json();
-                if (!resp.ok) throw new Error(body.error || "Error en POST");
-                onUploadSuccess(secureUrl, selectedCategory);
-                toast.success("Imagen guardada en Firestore.");
+            uploadedUrlsRef.current.push(result.info.secure_url);
+          }
+
+          // Cuando el usuario confirma (queues-end), envía todas las URLs
+          if (result?.event === "queues-end") {
+            const urls = [...uploadedUrlsRef.current];
+            const category = categoryRef.current;
+
+            Promise.all(
+              urls.map((url) =>
+                fetch("/api/images", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ url, category }),
+                })
+              )
+            )
+              .then(() => {
+                onUploadSuccess(urls[0], category);
+                toast.success("Imagen(es) guardada(s) en Firestore.");
               })
               .catch((err) => {
                 console.error("[Front] Error al guardar:", err);
                 toast.error("No se pudo guardar en Firestore.");
               })
-              .finally(() => setIsOpen(false));
+              .finally(() => {
+                uploadedUrlsRef.current = [];
+                setIsOpen(false);
+              });
           }
         }
       );
       setIsWidgetReady(true);
     }
-  }, [selectedCategory, onUploadSuccess]);
+  }, [onUploadSuccess]);
 
   const openWidget = () => {
-    if (!user) {
-      toast.error("Debes iniciar sesión.");
-      return;
-    }
-    if (!selectedCategory) {
-      toast.error("Selecciona categoría.");
-      return;
-    }
-    if (!isWidgetReady || !widgetRef.current) {
-      toast.error("Widget no listo.");
-      return;
-    }
-    widgetRef.current?.open();
+    if (!user) return toast.error("Debes iniciar sesión.");
+    if (!selectedCategory) return toast.error("Selecciona categoría.");
+    if (!isWidgetReady || !widgetRef.current) return toast.error("Widget no listo.");
+
+    widgetRef.current.open();
   };
 
   const handleLogin = async () => {
@@ -112,7 +128,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
 
   return (
     <>
-      {/* Floating buttons */}
+      {/* Botones flotantes */}
       <div className="fixed z-10 bottom-4 right-4 flex flex-col items-end space-y-2">
         {user ? (
           <>
@@ -139,9 +155,9 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
         )}
       </div>
 
-      {/* Modal */}
+      {/* Modal de subida */}
       {isOpen && (
-        <div className="fixed z-10 top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed z-10 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-xl space-y-4 w-80">
             <h2 className="text-xl font-bold">Subir Imagen</h2>
             <select

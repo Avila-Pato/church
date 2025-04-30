@@ -1,10 +1,10 @@
 const categoryNames = [
   "Iglesia y comunidad",
-  "Servicios religiosos",
+  "Servicios",
   "Eventos especiales",
   "Bautizos",
   "Matrimonios",
-  "Conciertos y alabanzas",
+  "Alabanzas",
   "Actividades juveniles",
   "Escuela dominical",
   "Misiones y voluntariado",
@@ -12,6 +12,6 @@ const categoryNames = [
   "Conferencias y retiros",
   "Grupos de oración",
   "Testimonios y bautizos",
-  "Comunión y sacramentos",
+  "Comunión y cenas",
 ];
 export default categoryNames

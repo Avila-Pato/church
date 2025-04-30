@@ -5,11 +5,10 @@ import { useState, useEffect, useCallback } from "react";
 import { CategoriesSection } from "../components/gallery-navbar";
 import ImageGallery from "@/app/modules/galeria/components/GalleryImages";
 import { InfiniteScroll } from "@/components/infinite-scroll";
-import categoryNames from "@/app/seeds/seed.categories";
 import { Spinner } from "@/components/spinner";
 
 interface GaleryProps {
-  categoryId?: string;
+  categoryId?: string; // puede ser slug o nombre
 }
 
 interface ImageRecord {
@@ -18,47 +17,45 @@ interface ImageRecord {
   createdAt?: { seconds: number; nanoseconds: number };
 }
 
-const GaleryView = ({ categoryId }: GaleryProps) => {
-  const [hasNextPage, setHasNextPage] = useState(true);
-  const [isFetchingNextPage, setIsFetchingNextPage] = useState(false);
+// Convierte nombre a slug
+function toSlug(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w ]+/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+// Determina el slug real a usar en la URL
+function resolveSlug(input?: string): string {
+  if (!input) return "";
+  // Si ya contiene guiones y no tiene espacios, asumimos que es slug
+  if (input.includes("-") && !input.includes(" ")) return input.toLowerCase();
+  // En cualquier otro caso, lo convertimos
+  return toSlug(input);
+}
+
+export default function GaleryView({ categoryId }: GaleryProps) {
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasNextPage, setHasNextPage] = useState(true);
+  const [isFetchingNextPage, setIsFetchingNextPage] = useState(false);
 
-  const fetchImagesFromFirestore = useCallback(
-    async (categoryId?: string) => {
+  const fetchImages = useCallback(
+    async (catInput?: string) => {
       setIsLoading(true);
+      const slug = resolveSlug(catInput);
+      const url = slug ? `/api/images?categoryId=${encodeURIComponent(slug)}` : "/api/images";
       try {
-        // Normaliza categoría si viene por prop
-        const formattedCategory = categoryId
-          ? categoryNames.find(
-              (cat) => cat.toLowerCase() === categoryId.toLowerCase()
-            )
-          : undefined;
-
-        const url = formattedCategory
-          ? `/api/images?categoryId=${encodeURIComponent(
-              formattedCategory
-            )}`
-          : "/api/images";
-
         const res = await fetch(url);
-        if (!res.ok) throw new Error("Error en la petición");
-
-        // Aseguramos que venga un array
-        const data = (await res.json()) as unknown;
-        if (!Array.isArray(data)) {
-          console.error("Respuesta inesperada de la API:", data);
-          setImages([]);
-          return;
-        }
-
-        // Mapea solo las URLs
-        const firestoreImages = (data as ImageRecord[]).map(
-          (img) => img.url
-        );
-        setImages(firestoreImages);
+        if (!res.ok) throw new Error(await res.text());
+        const data = (await res.json()) as ImageRecord[];
+        setImages(data.map((img) => img.url));
       } catch (error) {
-        console.error("Error fetching images from Firestore:", error);
+        console.error("Error fetching images:", error);
+        setImages([]);
       } finally {
         setIsLoading(false);
       }
@@ -66,27 +63,22 @@ const GaleryView = ({ categoryId }: GaleryProps) => {
     []
   );
 
+  // Carga inicial y cuando cambia categoryId
   useEffect(() => {
-    fetchImagesFromFirestore(categoryId);
-  }, [categoryId, fetchImagesFromFirestore]);
+    fetchImages(categoryId);
+  }, [categoryId, fetchImages]);
 
+  // Al subir, recarga la categoría subida
   const handleUploadSuccess = useCallback(
-    (imageUrl: string, uploadedCategory: string) => {
-      // Solo añade si coincide con la categoría actual (o si no filtramos)
-      if (
-        !categoryId ||
-        categoryId.toLowerCase() === uploadedCategory.toLowerCase()
-      ) {
-        setImages((prev) => [...prev, imageUrl]);
-      }
+    (_url: string, uploadedCategory: string) => {
+      fetchImages(uploadedCategory);
     },
-    [categoryId]
+    [fetchImages]
   );
 
   const fetchNextPage = async () => {
     if (isFetchingNextPage || !hasNextPage) return;
     setIsFetchingNextPage(true);
-    // Simula carga adicional
     setTimeout(() => {
       setHasNextPage(false);
       setIsFetchingNextPage(false);
@@ -103,13 +95,8 @@ const GaleryView = ({ categoryId }: GaleryProps) => {
 
   return (
     <main className="min-h-screen my-20">
-      <CategoriesSection
-        categoryId={categoryId}
-        onUploadSuccess={handleUploadSuccess}
-      />
-
+      <CategoriesSection categoryId={categoryId} onUploadSuccess={handleUploadSuccess} />
       <ImageGallery images={images} />
-
       <InfiniteScroll
         hasNextPage={hasNextPage}
         isFetchingNextPage={isFetchingNextPage}
@@ -117,6 +104,4 @@ const GaleryView = ({ categoryId }: GaleryProps) => {
       />
     </main>
   );
-};
-
-export default GaleryView;
+}
