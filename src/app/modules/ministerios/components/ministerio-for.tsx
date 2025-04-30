@@ -18,15 +18,12 @@ export const Formulario = () => {
                     placeholder="Nombre"
                     aria-placeholder='Escribe tu nombre..'
                 />
-
-
                 <input
                     type="text"
                     id='Correo'
                     value={correo} onChange={(e) => setCorreo(e.target.value)}
                     placeholder="Correo"
                     aria-placeholder='Escribe tu correo..' />
-
                 <textarea 
                 name=""
                 id=""
@@ -34,7 +31,6 @@ export const Formulario = () => {
                 rows={10}
                 placeholder='Escribe tu mensaje..'>
                 </textarea>
-
                 <button className='button__enviar' type="submit" id='button__enviar'>Enviar</button>
             </form>
         </div>
