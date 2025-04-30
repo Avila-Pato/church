@@ -14,6 +14,7 @@ declare global {
           uploadPreset: string;
           sources?: string[];
           multiple?: boolean;
+          maxFiles?: number;
           showCompletedButton?: boolean;
           singleUploadAutoClose?: boolean;
         },
@@ -53,14 +54,15 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
           cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!,
           uploadPreset: "church_text",
           sources: ["local", "url", "camera", "google_drive"],
-          multiple: false,
+          multiple: true,           // Permitir múltiples archivos
+          maxFiles: 20,            // Límite opcional de archivos
           showCompletedButton: true,
           singleUploadAutoClose: false,
         },
         (error, result) => {
           if (error) {
             console.error("[Cloudinary] error:", error.message);
-            toast.error("Error al subir imagen.");
+            toast.error("Error al subir imagen(es).");
             return;
           }
 
@@ -84,6 +86,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
               )
             )
               .then(() => {
+                // Notificar solo primera URL, o iterar según sea necesario
                 onUploadSuccess(urls[0], category);
                 toast.success("Imagen(es) guardada(s) en Firestore.");
               })
@@ -159,7 +162,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
       {isOpen && (
         <div className="fixed z-10 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-xl space-y-4 w-80">
-            <h2 className="text-xl font-bold">Subir Imagen</h2>
+            <h2 className="text-xl font-bold">Subir Imagen(es)</h2>
             <select
               className="w-full p-2 border rounded"
               value={selectedCategory}
