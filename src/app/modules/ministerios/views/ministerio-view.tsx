@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import { useRef } from "react";
-import { Formulario } from "../components/ministerio-for";
 
 
 const MinisteryPage = () => {
@@ -162,9 +161,6 @@ const MinisteryPage = () => {
 
                         El proyecto de nuestra iglesia es alcanzar a la comunidad para Cristo, mostrando su amor a través del servicio, evangelismo, compañerismo, discipulado y adoración a Dios. Creemos firmemente que la iglesia debe ser una casa de misericordia abierta a todas las personas, sin importar su nivel académico, lugar de origen, raza o estatus social. Este formato es más claro y organizado.
                     </p>
-                    <div>
-                        <Formulario />
-                    </div>
                 </div>
 
                 <div className="bg-[#E1D7CB] flex flex-col rounded-xl w-full  p-4 shadow-lg">

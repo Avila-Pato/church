@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Formulario } from "../../ministerios/components/ministerio-for";
 
 const AboutView = () => {
     return (
@@ -59,45 +60,14 @@ const AboutView = () => {
                                 
                         />
                     </div>
+                    
                 </div>
+                
 
                 {/* Sección de texto y tarjetas alineadas a la derecha */}
-                <aside className="w-full md:w-1/2 sm:w-1/2   min-h-screen  flex flex-col justify-center items-center py-8">
+                <aside className="w-full md:w-1/2 sm:w-1/2   ">
                     {/* Título */}
-                    <h1 className="text-3xl font-bold text-blue-900 mb-6">Contactos</h1>
-
-                    {/* Contenedor de tarjetas */}
-                    <div className="w-full grid grid-cols-2 gap-2 px-4">
-                        {/* Tarjeta 1 */}
-                        <div className="bg-white bg-opacity-75 rounded-xl p-6 text-center">
-                            <p className="text-xl font-semibold text-gray-800">Iglesia Imep - Sede Central</p>
-                            <p className="text-gray-600">Contacto: +569 9932554391</p>
-                        </div>
-
-                        {/* Tarjeta 2 */}
-                        <div className="bg-white bg-opacity-75 rounded-xl p-6 text-center">
-                            <p className="text-xl font-semibold text-gray-800">Iglesia Lorem - Sede Norte</p>
-                            <p className="text-gray-600">Contacto: +569 876543210</p>
-                        </div>
-
-                        {/* Tarjeta 3 */}
-                        <div className="bg-white bg-opacity-75 rounded-xl p-6 text-center">
-                            <p className="text-xl font-semibold text-gray-800">Iglesia Ipsum - Sede Sur</p>
-                            <p className="text-gray-600">Contacto: +569 123456789</p>
-                        </div>
-
-                        {/* Tarjeta 4 */}
-                        <div className="bg-white bg-opacity-75 rounded-xl p-6 text-center">
-                            <p className="text-xl font-semibold text-gray-800">Iglesia Dolor - Sede Este</p>
-                            <p className="text-gray-600">Contacto: +569 987654321</p>
-                        </div>
-
-                        {/* Tarjeta 5 */}
-                        <div className="bg-white bg-opacity-75 rounded-xl p-6 text-center">
-                            <p className="text-xl font-semibold text-gray-800">Iglesia Sit Amet - Sede Oeste</p>
-                            <p className="text-gray-600">Contacto: +569 555555555</p>
-                        </div>
-                    </div>
+                        <Formulario />
                 </aside>
             </div>
         </section>
