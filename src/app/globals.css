@@ -82,7 +82,7 @@ input:focus, textarea:focus {
   border-bottom: 1px solid #000;
 }
 
-.button_enviar {
+.button__enviar {
   border: none;
   outline: none;
   padding: 15px;
@@ -95,7 +95,7 @@ input:focus, textarea:focus {
   transition: all 300ms;
 }
 
-.button_enviar:hover {
+.button__enviar:hover {
   transform: scale(1.05);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
