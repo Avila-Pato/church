@@ -15,8 +15,7 @@ declare global {
           sources?: string[];
           multiple?: boolean;
           maxFiles?: number;
-          showCompletedButton?: boolean;
-          singleUploadAutoClose?: boolean;
+         
         },
         callback: (
           error: { message: string } | null,
@@ -56,8 +55,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
           sources: ["local", "url", "camera", "google_drive"],
           multiple: true,           // Permitir múltiples archivos
           maxFiles: 20,            // Límite opcional de archivos
-          showCompletedButton: true,
-          singleUploadAutoClose: false,
+          
         },
         (error, result) => {
           if (error) {
@@ -160,7 +158,7 @@ export default function UploadFormCloud({ categories, onUploadSuccess }: Props) 
 
       {/* Modal de subida */}
       {isOpen && (
-        <div className="fixed z-10 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed z-10 inset-0 bg-black bg-opacity-50 flex items-center justify-center overflow-auto">
           <div className="bg-white p-6 rounded-xl space-y-4 w-80">
             <h2 className="text-xl font-bold">Subir Imagen(es)</h2>
             <select
