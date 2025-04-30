@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useRef } from "react";
+import { Formulario } from "../components/ministerio-for";
 
 
 const MinisteryPage = () => {
@@ -145,7 +146,7 @@ const MinisteryPage = () => {
 
             {/* 1 catalogo */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  p-4   max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] rounded-xl w-full  p-4  right-10">
+                <div className="bg-[#E1D7CB] rounded-xl w-full  p-4  right-10">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -161,9 +162,12 @@ const MinisteryPage = () => {
 
                         El proyecto de nuestra iglesia es alcanzar a la comunidad para Cristo, mostrando su amor a través del servicio, evangelismo, compañerismo, discipulado y adoración a Dios. Creemos firmemente que la iglesia debe ser una casa de misericordia abierta a todas las personas, sin importar su nivel académico, lugar de origen, raza o estatus social. Este formato es más claro y organizado.
                     </p>
+                    <div>
+                        <Formulario />
+                    </div>
                 </div>
 
-                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full  p-4 shadow-lg">
+                <div className="bg-[#E1D7CB] flex flex-col rounded-xl w-full  p-4 shadow-lg">
                     <Image
                         src="/img/two.jpg"
                         alt="church"
@@ -217,7 +221,7 @@ const MinisteryPage = () => {
 
             {/* 2 catalogo */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  justify-center p-2 items-center max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full  p-4 shadow-lg">
+                <div className="bg-[#E1D7CB] flex flex-col rounded-xl w-full  p-4 shadow-lg">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -235,7 +239,7 @@ const MinisteryPage = () => {
                     </p>
                 </div>
 
-                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full p-4 shadow-lg">
+                <div className="bg-[#E1D7CB] flex flex-col rounded-xl w-full p-4 shadow-lg">
                     <Image
                         src="/img/two.jpg"
                         alt="church"
@@ -288,7 +292,7 @@ const MinisteryPage = () => {
 
             {/* 2 catalogo */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-16 gap-1  justify-center p-2 items-center max-w-full mx-auto">
-                <div className="bg-[#e3e3e3f6] flex flex-col rounded-xl w-full   p-4 shadow-lg">
+                <div className="bg-[#E1D7CB] flex flex-col rounded-xl w-full   p-4 shadow-lg">
                     <Image
                         src="/img/central2.jpg"
                         alt="church"
@@ -306,7 +310,7 @@ const MinisteryPage = () => {
                     </p>
                 </div>
 
-                <div className="bg-[#E3E3E3] flex flex-col rounded-xl w-full  p-4 shadow-lg">
+                <div className="bg-[#E1D7CB] flex flex-col rounded-xl w-full  p-4 shadow-lg">
                     <Image
                         src="/img/two.jpg"
                         alt="church"
